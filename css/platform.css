@@ -1,0 +1,41 @@
+/* chart */
+.graph-box{
+   height: 50vh; 
+   background: #161619;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   border-radius: 10px;
+   /* left: 50%; */
+}
+.graph-text{
+   display: block;
+}
+.loading{
+   display:none;
+}
+.chart{
+   display: none;
+   width: 100%;
+   height: 100%;
+}
+#chart{
+   width: 100%;
+}
+.displayDiv{
+   width: 100%;
+   height: 20%;
+   margin: 5px;
+   background-color: silver;
+   /* text-align: center; */
+   font-size: 14px;
+   border: 2px solid lightblue;
+   border-radius: 5px;
+}
+/* end of chart */
+
+
+h1, h2, h3, h4, h5, p, label, small {
+   color: black;
+}
+
