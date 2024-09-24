@@ -171,34 +171,134 @@ rel="stylesheet"
                     </div>
                 
                   </div>
-                  <div class="container-fluid my-5">
+                  
+                <div class="col-fluid">
+                  <h4>Settings</h4>
+                <div class="row d-flex justify-content-start"> 
+                  <div class="col-12 col-sm-4">
+                    <div class="form-floating mb-3">
+                      <select class="form-select" name="temperature_unit" id="temperature_unit" aria-label="Temperature Unit">
+                        <option value="">Kelvin °K</option>
+                        <option value="f">Fahrenheit °F</option>
+                        <option value="c">Celsius °C</option>
+                      </select> <label for="temperature_unit">Temperature Unit</label>
+                    </div>
+                  </div> 
+                  <div class="col-12 col-sm-4">
+                    <div class="form-floating mb-3">
+                      <select class="form-select" name="wind_speed_unit" id="wind_speed_unit" aria-label="Windspeed Unit">
+                        <option value="">m/s</option>
+                        <option value="km/hr">Km/h</option>
+                        <option value="knot">Knots</option>
+                      </select>
+                       <label for="wind_speed_unit">Wind Speed Unit</label>
+                      </div>
+                    </div> 
+                    <div class="col-12 col-sm-4"><div class="form-floating mb-3">
+                      <select class="form-select" name="pressure_unit" id="pressure_unit" aria-label="Pressure Unit">
+                        <option value="">hpa</option>
+                        <option value="mmhg">mmhg</option>
+                      </select> <label for="pressure_unit">Pressure Unit</label>
+                    </div>
+                  </div> 
+                 
+                </div>
+                </div>
+                  </div>
+
+
+                    <div class="container-fluid my-5">
                 
                     <div class="row d-flex justify-content-start">
                 
                       <div class="col-lg-12 col-md-12">
+                                                <!-- Hourly Variables -->
+                                                <h4 class="mt-5">Hourly Weather Variables <span class="badge badge-success">Coming Soon</span></h4>
+
+                                                <div class="row g-4 d-flex justify-content-start my-1">
+                                                <div class="col-12 col-lg-3 col-md-4 col-sm-6">
+                                                  <div class="form-check">
+                                                    <input class="form-check-input hourly-variable" type="checkbox" value="" id="air_temperature" />
+                                                    <label class="form-check-label" for="air_temperature">Temperature (2m)</label>
+                                                  </div>
+                                                </div>
+                                             
+                                              <div class="col-12 col-lg-3 col-md-4 col-sm-6">
+                                                <div class="form-check">
+                                                  <input class="form-check-input hourly-variable" type="checkbox" value="" id="wind_speed_10m" />
+                                                  <label class="form-check-label" for="wind_speed_10m">Wind Speed (10m)</label>
+                                                </div>
+                                              </div>
+                                              <div class="col-12 col-lg-3 col-md-4 col-sm-6">
+                                                <div class="form-check">
+                                                  <input class="form-check-input hourly-variable" type="checkbox" value="" id="wind_speed_100m" />
+                                                  <label class="form-check-label" for="wind_speed_100m">Wind Speed (100m)</label>
+                                                </div>
+                                              </div>
+                                              <div class="col-12 col-lg-3 col-md-4 col-sm-6">
+                                                <div class="form-check">
+                                                  <input class="form-check-input hourly-variable" type="checkbox" value="" id="2m_dewpoint_temperature" />
+                                                  <label class="form-check-label" for="2m_dewpoint_temperature">2m Dew Point Temperature</label>
+                                                </div>
+                                              </div>
+                                              
+                                            </div>
+                                              <div class="row g-4 d-flex justify-content-start my-1">
+                                                <div class="col-12 col-lg-3 col-md-4 col-sm-6">
+                                                  <div class="form-check">
+                                                    <input class="form-check-input hourly-variable" type="checkbox" value="" id="soil_temperature_l1" />
+                                                    <label class="form-check-label" for="soil_temperature_l1">Soil Temperature (0-10cm)</label>
+                                                  </div>
+                                                </div>
+                                                <div class="col-12 col-lg-3 col-md-4 col-sm-6">
+                                                  <div class="form-check">
+                                                    <input class="form-check-input hourly-variable" type="checkbox" value="" id="soil_temperature_l2" />
+                                                    <label class="form-check-label" for="soil_temperature_l2">Soil Temperature (11-25cm)</label>
+                                                  </div>
+                                                </div>
+                                                <div class="col-12 col-lg-3 col-md-4 col-sm-6">
+                                                  <div class="form-check">
+                                                    <input class="form-check-input hourly-variable" type="checkbox" value="" id="soil_temperature_l3" />
+                                                    <label class="form-check-label" for="soil_temperature_l3">Soil Temperature (26-50cm)</label>
+                                                  </div>
+                                                </div>
+                                                <div class="col-12 col-lg-3 col-md-4 col-sm-6">
+                                                  <div class="form-check">
+                                                    <input class="form-check-input hourly-variable" type="checkbox" value="" id="soil_temperature_l4" />
+                                                    <label class="form-check-label" for="soil_temperature_l4">Soil Temperature (50cm and above)</label>
+                                                  </div>
+                                                </div>
+                                                <div class="col-12 col-lg-3 col-md-4 col-sm-6">
+                                                  <div class="form-check">
+                                                    <input class="form-check-input hourly-variable" type="checkbox" value="" id="10m_instantaneous_wind_gusts" />
+                                                    <label class="form-check-label" for="10m_instantaneous_wind_gusts">10m Instantaneous Wind Gust</label>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                              <br>
                           <h4>Daily Weather Variables</h4>
                           <div class="row g-4 d-flex justify-content-start my-1">
                             <div class="col-12 col-lg-3 col-md-4 col-sm-6">
                               <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="air_temperature_min" checked />
+                                <input class="form-check-input daily-variable" type="checkbox" value="" id="air_temperature_min" checked />
                                 <label class="form-check-label" for="air_temperature_min">Minimum Temperature</label>
                               </div>
                             </div>
                             <div class="col-12 col-lg-3 col-md-4 col-sm-6">
                               <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="air_temperature_max" />
+                                <input class="form-check-input daily-variable" type="checkbox" value="" id="air_temperature_max" />
                                 <label class="form-check-label" for="air_temperature_max">Maximum Temperature</label>
                               </div>
                             </div>
                             <div class="col-12 col-lg-3 col-md-4 col-sm-6">
                               <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="wind_speed_10m" />
+                                <input class="form-check-input daily-variable" type="checkbox" value="" id="wind_speed_10m" />
                                 <label class="form-check-label" for="wind_speed_10m">Wind Speed (10m)</label>
                               </div>
                             </div>
                             <div class="col-12 col-lg-3 col-md-4 col-sm-6">
                               <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="relative_humidity_min" />
+                                <input class="form-check-input daily-variable" type="checkbox" value="" id="relative_humidity_min" />
                                 <label class="form-check-label" for="relative_humidity_min">Minimum Relative Humidity</label>
                               </div>
                             </div>
@@ -206,25 +306,25 @@ rel="stylesheet"
                         <div class="row g-4 d-flex justify-content-start my-1">
                           <div class="col-12 col-lg-3 col-md-4 col-sm-6">
                             <div class="form-check">
-                              <input class="form-check-input" type="checkbox" value="" id="relative_humidity_max" />
+                              <input class="form-check-input daily-variable" type="checkbox" value="" id="relative_humidity_max" />
                               <label class="form-check-label" for="relative_humidity_max">Maximum Relative Humidity</label>
                             </div>
                           </div>
                           <div class="col-12 col-lg-3 col-md-4 col-sm-6">
                             <div class="form-check">
-                              <input class="form-check-input" type="checkbox" value="" id="evaporation" />
+                              <input class="form-check-input daily-variable" type="checkbox" value="" id="evaporation" />
                               <label class="form-check-label" for="evaporation">Evaporation</label>
                             </div>
                           </div>
                           <div class="col-12 col-lg-3 col-md-4 col-sm-6">
                             <div class="form-check">
-                              <input class="form-check-input" type="checkbox" value="" id="surface_pressure" />
+                              <input class="form-check-input daily-variable" type="checkbox" value="" id="surface_pressure" />
                               <label class="form-check-label" for="surface_pressure">Surface Pressure</label>
                             </div>
                           </div>
                           <div class="col-12 col-lg-3 col-md-4 col-sm-6">
                             <div class="form-check">
-                              <input class="form-check-input" type="checkbox" value="" id="sensible_heat_flux" />
+                              <input class="form-check-input daily-variable" type="checkbox" value="" id="sensible_heat_flux" />
                               <label class="form-check-label" for="sensible_heat_flux">Sensible Heat Flux</label>
                             </div>
                           </div>
@@ -234,24 +334,24 @@ rel="stylesheet"
                         <div class="row g-4 d-flex justify-content-start my-1">
                           <div class="col-12 col-lg-3 col-md-4 col-sm-6">
                             <div class="form-check">
-                              <input class="form-check-input" type="checkbox" value="" id="top_net_solar" />
+                              <input class="form-check-input daily-variable" type="checkbox" value="" id="top_net_solar" />
                               <label class="form-check-label" for="top_net_solar">Top Net Solar Irradiation</label>
                             </div>
                           </div>
                           <div class="col-12 col-lg-3 col-md-4 col-sm-6">
                             <div class="form-check">
-                              <input class="form-check-input" type="checkbox" value="" id="surface_net_thermal" />
+                              <input class="form-check-input daily-variable" type="checkbox" value="" id="surface_net_thermal" />
                               <label class="form-check-label" for="surface_net_thermal">Surface Net Thermal Irradiation</label>
                             </div>
                           </div>
                           <div class="col-12 col-lg-3 col-md-4 col-sm-6">
                             <div class="form-check">
-                              <input class="form-check-input" type="checkbox" value="" id="surface_net_solar" />
+                              <input class="form-check-input daily-variable" type="checkbox" value="" id="surface_net_solar" />
                               <label class="form-check-label" for="surface_net_solar">Surface Net Solar Irradiation</label>
                             </div>
                           </div><div class="col-12 col-lg-3 col-md-4 col-sm-6">
                             <div class="form-check">
-                              <input class="form-check-input" type="checkbox" value="" id="top_net_thermal" />
+                              <input class="form-check-input daily-variable" type="checkbox" value="" id="top_net_thermal" />
                               <label class="form-check-label" for="top_net_thermal">Top Net Thermal Irradiation</label>
                             </div>
                           </div>
@@ -260,25 +360,25 @@ rel="stylesheet"
                         <div class="row g-4 d-flex justify-content-start my-1">
                           <div class="col-12 col-lg-3 col-md-4 col-sm-6">
                             <div class="form-check">
-                              <input class="form-check-input" type="checkbox" value="" id="soil_temperature_l1" />
+                              <input class="form-check-input daily-variable" type="checkbox" value="" id="soil_temperature_l1" />
                               <label class="form-check-label" for="soil_temperature_l1">Soil Temperature (0-10cm)</label>
                             </div>
                           </div>
                           <div class="col-12 col-lg-3 col-md-4 col-sm-6">
                             <div class="form-check">
-                              <input class="form-check-input" type="checkbox" value="" id="soil_temperature_l2" />
+                              <input class="form-check-input daily-variable" type="checkbox" value="" id="soil_temperature_l2" />
                               <label class="form-check-label" for="soil_temperature_l2">Soil Temperature (11-25cm)</label>
                             </div>
                           </div>
                           <div class="col-12 col-lg-3 col-md-4 col-sm-6">
                             <div class="form-check">
-                              <input class="form-check-input" type="checkbox" value="" id="soil_temperature_l3" />
+                              <input class="form-check-input daily-variable" type="checkbox" value="" id="soil_temperature_l3" />
                               <label class="form-check-label" for="soil_temperature_l3">Soil Temperature (26-50cm)</label>
                             </div>
                           </div>
                           <div class="col-12 col-lg-3 col-md-4 col-sm-6">
                             <div class="form-check">
-                              <input class="form-check-input" type="checkbox" value="" id="soil_temperature_l4" />
+                              <input class="form-check-input daily-variable" type="checkbox" value="" id="soil_temperature_l4" />
                               <label class="form-check-label" for="soil_temperature_l4">Soil Temperature (50cm and above)</label>
                             </div>
                           </div>
@@ -287,25 +387,25 @@ rel="stylesheet"
                         <div class="row g-4 d-flex justify-content-start my-1">
                           <div class="col-12 col-lg-3 col-md-4 col-sm-6">
                             <div class="form-check">
-                              <input class="form-check-input" type="checkbox" value="" id="potential_evaporation" />
+                              <input class="form-check-input daily-variable" type="checkbox" value="" id="potential_evaporation" />
                               <label class="form-check-label" for="potential_evaporation">Potential Evaporation</label>
                             </div>
                           </div>
                           <div class="col-12 col-lg-3 col-md-4 col-sm-6">
                             <div class="form-check">
-                              <input class="form-check-input" type="checkbox" value="" id="wind_speed_100m" />
+                              <input class="form-check-input daily-variable" type="checkbox" value="" id="wind_speed_100m" />
                               <label class="form-check-label" for="100m_wind_speed">100m Wind Speed</label>
                             </div>
                           </div>
                           <div class="col-12 col-lg-3 col-md-4 col-sm-6">
                             <div class="form-check">
-                              <input class="form-check-input" type="checkbox" value="" id="2m_dewpoint_temperature" />
+                              <input class="form-check-input daily-variable" type="checkbox" value="" id="2m_dewpoint_temperature" />
                               <label class="form-check-label" for="2m_dewpoint_temperature">2m Dew Point Temperature</label>
                             </div>
                           </div>
                           <div class="col-12 col-lg-3 col-md-4 col-sm-6">
                             <div class="form-check">
-                              <input class="form-check-input" type="checkbox" value="" id="low_cloud_cover" />
+                              <input class="form-check-input daily-variable" type="checkbox" value="" id="low_cloud_cover" />
                               <label class="form-check-label" for="low_cloud_cover">Low Cloud Cover</label>
                             </div>
                           </div>
@@ -314,25 +414,25 @@ rel="stylesheet"
                         <div class="row g-4 d-flex justify-content-start my-1">
                           <div class="col-12 col-lg-3 col-md-4 col-sm-6">
                             <div class="form-check">
-                              <input class="form-check-input" type="checkbox" value="" id="high_cloud_cover" />
+                              <input class="form-check-input daily-variable" type="checkbox" value="" id="high_cloud_cover" />
                               <label class="form-check-label" for="high_cloud_cover">High Cloud Cover</label>
                             </div>
                           </div>
                           <div class="col-12 col-lg-3 col-md-4 col-sm-6">
                             <div class="form-check">
-                              <input class="form-check-input" type="checkbox" value="" id="medium_cloud_cover" />
+                              <input class="form-check-input daily-variable" type="checkbox" value="" id="medium_cloud_cover" />
                               <label class="form-check-label" for="medium_cloud_cover">Medium Cloud Cover</label>
                             </div>
                           </div>
                           <div class="col-12 col-lg-3 col-md-4 col-sm-6">
                             <div class="form-check">
-                              <input class="form-check-input" type="checkbox" value="" id="total_cloud_cover" />
+                              <input class="form-check-input daily-variable" type="checkbox" value="" id="total_cloud_cover" />
                               <label class="form-check-label" for="total_cloud_cover">Total Cloud Cover</label>
                             </div>
                           </div>
                           <div class="col-12 col-lg-3 col-md-4 col-sm-6">
                             <div class="form-check">
-                              <input class="form-check-input" type="checkbox" value="" id="runoff" />
+                              <input class="form-check-input daily-variable" type="checkbox" value="" id="runoff" />
                               <label class="form-check-label" for="runoff">Runoff</label>
                             </div>
                           </div>
@@ -341,25 +441,25 @@ rel="stylesheet"
                         <div class="row g-4 d-flex justify-content-start my-1">
                           <div class="col-12 col-lg-3 col-md-4 col-sm-6">
                             <div class="form-check">
-                              <input class="form-check-input" type="checkbox" value="" id="subsurface_runoff" />
+                              <input class="form-check-input daily-variable" type="checkbox" value="" id="subsurface_runoff" />
                               <label class="form-check-label" for="subsurface_runoff">Subsurface Runoff</label>
                             </div>
                           </div>
                           <div class="col-12 col-lg-3 col-md-4 col-sm-6">
                             <div class="form-check">
-                              <input class="form-check-input" type="checkbox" value="" id="surface_runoff" />
+                              <input class="form-check-input daily-variable" type="checkbox" value="" id="surface_runoff" />
                               <label class="form-check-label" for="surface_runoff">Surface Runoff</label>
                             </div>
                           </div>
                           <div class="col-12 col-lg-3 col-md-4 col-sm-6">
                             <div class="form-check">
-                              <input class="form-check-input" type="checkbox" value="" id="convective_rain_rate" />
+                              <input class="form-check-input daily-variable" type="checkbox" value="" id="convective_rain_rate" />
                               <label class="form-check-label" for="convective_rain_rate">Convective Rain Rate</label>
                             </div>
                           </div>
                           <div class="col-12 col-lg-3 col-md-4 col-sm-6">
                             <div class="form-check">
-                              <input class="form-check-input" type="checkbox" value="" id="total_column_rain_water" />
+                              <input class="form-check-input daily-variable" type="checkbox" value="" id="total_column_rain_water" />
                               <label class="form-check-label" for="total_column_rain_water">Total Column Rain Rate</label>
                             </div>
                           </div>
@@ -368,120 +468,25 @@ rel="stylesheet"
                         <div class="row g-4 d-flex justify-content-start my-1">
                           <div class="col-12 col-lg-3 col-md-4 col-sm-6">
                             <div class="form-check">
-                              <input class="form-check-input" type="checkbox" value="" id="total_precipitation" />
+                              <input class="form-check-input daily-variable" type="checkbox" value="" id="total_precipitation" />
                               <label class="form-check-label" for="total_precipitation">Total Precipitation</label>
                             </div>
                           </div>
                           <div class="col-12 col-lg-3 col-md-4 col-sm-6">
                             <div class="form-check">
-                              <input class="form-check-input" type="checkbox" value="" id="10m_instantaneous_wind_gusts" />
+                              <input class="form-check-input daily-variable" type="checkbox" value="" id="10m_instantaneous_wind_gusts" />
                               <label class="form-check-label" for="10m_instantaneous_wind_gusts">10m Instantaneous Wind Gust</label>
                             </div>
                           </div>
                           <div class="col-12 col-lg-3 col-md-4 col-sm-6">
                             <div class="form-check">
-                              <input class="form-check-input" type="checkbox" value="" id="total_column_cloud_liquid_water" />
+                              <input class="form-check-input daily-variable" type="checkbox" value="" id="total_column_cloud_liquid_water" />
                               <label class="form-check-label" for="total_column_cloud_liquid_water">Total Column Cloud Liquid Water</label>
                             </div>
                           </div>
                         </div>
-                        <!-- Hourly Variables -->
-                        <h4 class="mt-5">Hourly Weather Variables <span class="badge badge-success">Coming Soon</span></h4>
-                          <!-- <div class="row g-4 d-flex justify-content-start my-1">
-                            <div class="col-12 col-lg-3 col-md-4 col-sm-6">
-                              <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="100m_wind_speed" checked />
-                                <label class="form-check-label" for="100m_wind_speed">Wind Speed (100m)</label>
-                              </div>
-                            </div>
-                            <div class="col-12 col-lg-3 col-md-4 col-sm-6">
-                              <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="10m_wind_speed" />
-                                <label class="form-check-label" for="10m_wind_speed">Wind Speed (10m)</label>
-                              </div>
-                            </div>
-                            <div class="col-12 col-lg-3 col-md-4 col-sm-6">
-                              <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="instantaneous_10m_wind_gust" />
-                                <label class="form-check-label" for="instantaneous_10m_wind_gust">Instantaneous Wind Gust (10m)</label>
-                              </div>
-                            </div>
-                            <div class="col-12 col-lg-3 col-md-4 col-sm-6">
-                              <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="2m_temperature" />
-                                <label class="form-check-label" for="2m_temperature">Temperature (2m)</label>
-                              </div>
-                            </div>
-                          </div>
-                        <div class="row g-4 d-flex justify-content-start my-1">
-                          <div class="col-12 col-lg-3 col-md-4 col-sm-6">
-                            <div class="form-check">
-                              <input class="form-check-input" type="checkbox" value="" id="soil_temperature_level_1" />
-                              <label class="form-check-label" for="soil_temperature_level_1">Soil Temperature (0-10cm)</label>
-                            </div>
-                          </div>
-                          <div class="col-12 col-lg-3 col-md-4 col-sm-6">
-                            <div class="form-check">
-                              <input class="form-check-input" type="checkbox" value="" id="soil_temperature_level_2" />
-                              <label class="form-check-label" for="soil_temperature_level_2">Soil Temperature (11-25cm)</label>
-                            </div>
-                          </div>
-                          <div class="col-12 col-lg-3 col-md-4 col-sm-6">
-                            <div class="form-check">
-                              <input class="form-check-input" type="checkbox" value="" id="soil_temperature_level_3" />
-                              <label class="form-check-label" for="soil_temperature_level_3">Soil Temperature (26-50cm)</label>
-                            </div>
-                          </div>
-                          <div class="col-12 col-lg-3 col-md-4 col-sm-6">
-                            <div class="form-check">
-                              <input class="form-check-input" type="checkbox" value="" id="soil_temperature_level_4" />
-                              <label class="form-check-label" for="soil_temperature_level_4">Soil Temperature (50cm and above)</label>
-                            </div>
-                          </div>
-                        
 
-                        </div>
-                        <div class="row g-4 d-flex justify-content-start my-1">
-                          <div class="col-12 col-lg-3 col-md-4 col-sm-6">
-                            <div class="form-check">
-                              <input class="form-check-input" type="checkbox" value="" id="2m_dewpoint_temperature" />
-                              <label class="form-check-label" for="2m_dewpoint_temperature">Dewpoint Temperature (2m)</label>
-                            </div>
-                          </div>
-                          <div class="col-12 col-lg-3 col-md-4 col-sm-6">
-                            <div class="form-check">
-                              <input class="form-check-input" type="checkbox" value="" id="low_cloud_cover" />
-                              <label class="form-check-label" for="low_cloud_cover">Low Cloud Cover</label>
-                            </div>
-                          </div>
-                          <div class="col-12 col-lg-3 col-md-4 col-sm-6">
-                            <div class="form-check">
-                              <input class="form-check-input" type="checkbox" value="" id="medium_cloud_cover" />
-                              <label class="form-check-label" for="medium_cloud_cover">Medium Cloud Cover</label>
-                            </div>
-                          </div><div class="col-12 col-lg-3 col-md-4 col-sm-6">
-                            <div class="form-check">
-                              <input class="form-check-input" type="checkbox" value="" id="high_cloud_cover" />
-                              <label class="form-check-label" for="high_cloud_cover">High Cloud Cover</label>
-                            </div>
-                          </div>
                           
-                        </div>
-                        <div class="row g-4 d-flex justify-content-start my-1">
-                          <div class="col-12 col-lg-3 col-md-4 col-sm-6">
-                            <div class="form-check">
-                              <input class="form-check-input" type="checkbox" value="" id="total_cloud_cover" />
-                              <label class="form-check-label" for="total_cloud_cover">Total Cloud Cover</label>
-                            </div>
-                          </div>
-                          <div class="col-12 col-lg-3 col-md-4 col-sm-6">
-                            <div class="form-check">
-                              <input class="form-check-input" type="checkbox" value="" id="total_column_cloud_liquid_water" />
-                              <label class="form-check-label" for="total_column_cloud_liquid_water">Total Column Cloud Liquid Water</label>
-                            </div>
-                          </div>
-                          
-                        </div> -->
   
                         <div class="col-auto my-5">
                           <div class="graph-box">
