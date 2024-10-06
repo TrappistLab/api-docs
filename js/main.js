@@ -22,6 +22,7 @@ const hourlyCheckboxes = document.querySelectorAll('input.hourly-variable[type="
 var dailyChecked = []
 var hourlyChecked = []
 dailyChecked.push('air_temperature_min');
+hourlyChecked.push('air_temperature')
 updateURL();
 dailyCheckboxes.forEach(checkbox => {
     checkbox.addEventListener('click', () => {
@@ -497,7 +498,7 @@ const Groups = {
     },
     'wind':{
         'variables':['wind_speed_10m','wind_speed_100m', '10m_instantaneous_wind_gusts'],
-        'unit':'km/hr'
+        'unit':'m/s'
     },
     'runoff':{
         'variables':['runoff','surface_runoff','subsurface_runoff','evaporation','potential_evaporation'],
@@ -730,6 +731,7 @@ function plotGraph(data) {
                 fill: false,
                 yAxisID: `y-axis-${index}`
             });
+            console.log(datasets);
         });
     });
 
@@ -737,7 +739,7 @@ function plotGraph(data) {
     if (myChart) {
         myChart.destroy();
     }
-console.log(datasets)
+    console.log(processedData.data.time)
     myChart = new Chart(ctx, {
         type: 'line',
         data: {
