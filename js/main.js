@@ -157,7 +157,6 @@ function renderArray(){
     // console.log(listContainer);
     listContainer.innerHTML = '';
     cities.forEach (element => {
-        console.log(element);
         const listItem = document.createElement('li')
         listItem.className = "list-group-item d-flex justify-content-between align-items-center";
         listItem.innerHTML = 
@@ -446,7 +445,6 @@ function plotGraph(data) {
     const datasets = [];
     const yAxes = {};
     let axisIndex = 0;
-    console.log(processedData)
 
     processedData.datasets.forEach(datasetObj => {
         const dataSet = datasetObj.data;
