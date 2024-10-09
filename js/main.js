@@ -199,47 +199,8 @@ function getGroupingscheme(timeRangeInYears){
         return 'year';  
     }
 }
-// function groupDataByscheme(data, scheme) {
-//     const groupedData = {};
-//     // const timeData = data.daily.time.map(date => new Date(date));
 
-//     data.daily.time.forEach((dateStr, idx) => {
-//         const date = new Date(dateStr);
-//         let groupKey;
-//         if (scheme === 'week') {
-//             // Group by week of the year
-//             // const weekNumber = getWeekNumber(date);
-//             // groupKey = `${date.getFullYear()}-W${weekNumber}`;
-//             groupKey = dateStr;
-//         } else if (scheme === 'month') {
-//             // Group by month
-//             groupKey = `${date.getFullYear()}-${date.getMonth() + 1}`;
-//         } else if (scheme === 'year') {
-//             // Group by year
-//             groupKey = `${date.getFullYear()}`;
-//         } else {
-//             // Group by day (no grouping)
-//             groupKey = dateStr;
-//         }
 
-//         if (!groupedData[groupKey]) {
-//             groupedData[groupKey] = {
-//                 time: [],
-//                 ...Object.keys(data.daily).filter(key => key !== 'time').reduce((acc, key) => {
-//                     acc[key] = [];
-//                     return acc;
-//                 }, {})
-//             };
-//         }
-//         groupedData[groupKey].time.push(dateStr);
-//         Object.keys(data.daily).filter(key => key !== 'time').forEach(key => {
-//             groupedData[groupKey][key].push(data.daily[key][idx]);
-//         });
-//     });
-//     // console.log(groupedData);
-
-//     return groupedData;
-// }
 function groupDataByscheme(dataSet, scheme) {
     const groupedData = {};
 
@@ -304,44 +265,44 @@ function calculateAverages(groupedData) {
     return averagedData;
 }
 
-// function groupByYear(data) {
-//     const timeData = data.daily.time.map(date => new Date(date));
-//     const timeRangeInYears = (Math.max(...timeData) - Math.min(...timeData)) / (365 * 24 * 60 * 60 * 1000);
-//     const scheme = getGroupingscheme(timeRangeInYears);
-    
-//     const groupedData = groupDataByscheme(data, scheme);
-//     const averagedData = calculateAverages(groupedData);
-//     return {data:averagedData, scheme:scheme};
-// }
+
 function processData(data) {
-    let combinedData = {};
-    let timeArray = [];
+    const datasets = [];
     let scheme = 'day';
+
     const hasDaily = data.daily && data.daily.time && data.daily.time.length > 0;
     const hasHourly = data.hourly && data.hourly.time && data.hourly.time.length > 0;
+
     if (hasDaily) {
-        timeArray = timeArray.concat(data.daily.time.map(date => new Date(date).getTime()));
-    }
-    if (hasHourly) {
-        timeArray = timeArray.concat(data.hourly.time.map(date => new Date(date).getTime()));
-    }
-    const minTime = Math.min(...timeArray);
-    const maxTime = Math.max(...timeArray);
-    const timeRangeInYears = (maxTime - minTime) / (365 * 24 * 60 * 60 * 1000);
-    scheme = getGroupingscheme(timeRangeInYears);
-    if (hasDaily) {
+        // Adjust daily time labels to include ' 00:00:00'
+        data.daily.time = data.daily.time.map(dateStr => dateStr + ' 00:00:00');
+        const dailyTimeArray = data.daily.time.map(date => new Date(date).getTime());
+        const minTime = Math.min(...dailyTimeArray);
+        const maxTime = Math.max(...dailyTimeArray);
+        const timeRangeInYears = (maxTime - minTime) / (365 * 24 * 60 * 60 * 1000);
+        scheme = getGroupingscheme(timeRangeInYears);
+
         const groupedDailyData = groupDataByscheme(data.daily, scheme);
         const averagedDailyData = calculateAverages(groupedDailyData);
-        combinedData = mergeData(combinedData, averagedDailyData);
-    }
-    if (hasHourly) {
-        const groupedHourlyData = groupDataByscheme(data.hourly, scheme);
-        const averagedHourlyData = calculateAverages(groupedHourlyData);
-        combinedData = mergeData(combinedData, averagedHourlyData);
+        datasets.push({ data: averagedDailyData, type: 'daily' });
     }
 
-    return { data: combinedData, scheme: scheme };
+    if (hasHourly) {
+        const hourlyTimeArray = data.hourly.time.map(date => new Date(date).getTime());
+        const minTime = Math.min(...hourlyTimeArray);
+        const maxTime = Math.max(...hourlyTimeArray);
+        const timeRangeInYears = (maxTime - minTime) / (365 * 24 * 60 * 60 * 1000);
+        scheme = getGroupingscheme(timeRangeInYears);
+
+        const groupedHourlyData = groupDataByscheme(data.hourly, scheme);
+        const averagedHourlyData = calculateAverages(groupedHourlyData);
+        datasets.push({ data: averagedHourlyData, type: 'hourly' });
+    }
+
+    return { datasets: datasets, scheme: scheme };
 }
+
+
 function downloadData(format) {
     const url = displayDiv.value + "&format=" + format;
 
@@ -402,40 +363,7 @@ function getData(){
         }
     });
 }
-// Group Y axis
-// function groupDataByUnit(data){
-// const variables = Object.keys(data.daily).filter(key=>key!='time');
 
-// }
-// function groupVariables(data, groups) {
-//     const groupedData = {};
-//     for (const groupName in groups) {
-//         if (groups.hasOwnProperty(groupName)) {
-//             groupedData[groupName] = {
-//                 variables: [],
-//                 unit: groups[groupName].unit
-//             };
-//         }
-//     }
-//     for (const variable in data.daily) {
-//         if (data.daily.hasOwnProperty(variable)) {
-//             for (const groupName in groups) {
-//                 if (groups.hasOwnProperty(groupName)) {
-//                      if (groups[groupName].variables.includes(variable)) {
-//                         groupedData[groupName].variables.push({
-//                             name: variable,
-//                             values:data.daily[variable]
-//                         });
-//                         break; 
-//                     }
-//                 }
-//             }
-//         }
-//     }
-   
-
-//     return groupedData;
-// }
 function groupVariables(data, groups) {
     const groupedData = {};
     for (const groupName in groups) {
@@ -511,227 +439,84 @@ const Groups = {
 }
 
 
-// function plotGraph(data) {
-//     const averagedData = groupByYear(data);
-//     const groupedVariables = groupVariables(data, Groups);
-
-//     const datasets = [];
-//     const yAxes = {};
-
-//     Object.keys(groupedVariables).forEach((groupName, index) => {
-//         const group = groupedVariables[groupName];
-//         const unit = group.unit;
-
-//         yAxes[`y-axis-${index}`] = {
-//             type: 'linear',
-//             display: false,
-//             position: index % 2 === 0 ? 'left' : 'right',
-//             ticks: {
-//                 beginAtZero: true,
-                
-//                     font:{
-//                         size:14,
-//                         family: '"Roboto", sans-serif'
-//                     },
-//             color:'#000000'
-
-//             },
-//             grid:{
-//                 display:false
-//             },
-//             title: {
-//                 display: true,
-//                 text: unit,
-//                 font: {
-//                     size: 14,
-//                     family: '"Roboto", sans-serif',
-//                     weight: "bold"
-                    
-//                 },
-//                 color: '#000000'
-//             }
-//         };
-
-//         group.variables.forEach((variable, variableIndex) => {
-//             const colors = [
-//                 'rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)', 
-//                 'rgba(75, 192, 192, 0.2)', 'rgba(153, 102, 255, 0.2)', 
-//                 'rgba(255, 159, 64, 0.2)'
-//             ];
-//             const borderColors = [
-//                 'rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 
-//                 'rgba(75, 192, 192, 1)', 'rgba(153, 102, 255, 1)', 
-//                 'rgba(255, 159, 64, 1)'
-//             ];
-
-//             datasets.push({
-//                 label: variable.name,
-//                 data: averagedData.data[variable.name],
-//                 backgroundColor: colors[(2 * index + variableIndex) % colors.length],
-//                 borderColor: borderColors[(2*index + variableIndex) % borderColors.length],
-//                 borderWidth: 2,
-//                 pointRadius: 0,
-//                 fill: false,
-//                 yAxisID: `y-axis-${index}`
-//             });
-//         });
-//     });
-
-//     myChart = new Chart(ctx, {
-//         type: 'line',
-//         data: {
-//             labels: averagedData.data.time,
-//             datasets: datasets
-//         },
-//         options: {
-//             responsive: true,
-//             maintainAspectRatio: false,
-//             hover: {
-//                 mode: 'nearest'
-//             },
-//             interaction: {
-//                 intersect: false
-//             },
-//             scales: {
-//                 x: {
-//                     type: 'time',
-//                     time: {
-//                         unit: `${averagedData.scheme}`,
-//                         tooltipFormat: averagedData.scheme === 'year' ? 'YYYY' : (averagedData.scheme === 'month' ? 'YYYY-MM' : 'YYYY-MM-DD')
-//                     },
-//                     ticks:{
-//                         font:{
-//                             size:14,
-//                             family: '"Roboto", sans-serif'
-//                         },
-//                     color:'#000000'
-//                     },
-
-//                     title: {
-//                         display: true,
-//                         text: 'Date',
-//                         font: {
-//                             size: 14,
-//                             family: '"Roboto", sans-serif',
-//                             weight: "bold"
-//                         },
-//                         color: '#000000'
-//                     }
-//                 },
-//                 ...yAxes
-//             },
-//             plugins: {
-//                 title: {
-//                     display: true,
-//                     text: 'Historical Data'
-//                 },
-//                 tooltip: {
-//                     callbacks: {
-//                         label: function (context) {
-//                             const label = context.dataset.label || '';
-//                             if (label) {
-//                                 return `${label}: ${context.formattedValue}`;
-//                             }
-//                             return context.formattedValue;
-//                         }
-//                     }
-//                 },
-//                 legend: {
-//                     onClick: (e, legendItem, legend) => {
-//                         const index = legendItem.datasetIndex;
-//                         const chartLegend = legend.chart;
-//                         const dataset = chartLegend.data.datasets[index];
-//                         const yAxisID = dataset.yAxisID;
-//                         dataset.hidden = !dataset.hidden;
-//                         const yAxisVisible = chartLegend.data.datasets.some(ds => ds.yAxisID === yAxisID && !ds.hidden);
-//                         chartLegend.options.scales[yAxisID].display = yAxisVisible;
-
-//                         chartLegend.update();
-//                     },
-//                     labels:{
-//                         font:{
-//                             family: '"Roboto", sans-serif',
-//                             size: 14
-//                         }
-//                     }                    
-//                 }
-//             }
-//         }
-//     });
-//     myChart.data.datasets.forEach(dataset => {
-//         const yAxisID = dataset.yAxisID;
-//         if (!dataset.hidden) {
-//             myChart.options.scales[yAxisID].display = true;
-//         }
-//     });
-
-//     Chart.defaults.color = '#000';
-//     Chart.defaults.font.size = 14;
 
 
-//     myChart.update();
-// }
 function plotGraph(data) {
     const processedData = processData(data);
-    const groupedVariables = groupVariables(processedData.data, Groups);
-
     const datasets = [];
     const yAxes = {};
+    let axisIndex = 0;
+    console.log(processedData)
 
-    Object.keys(groupedVariables).forEach((groupName, index) => {
-        const group = groupedVariables[groupName];
-        const unit = group.unit;
+    processedData.datasets.forEach(datasetObj => {
+        const dataSet = datasetObj.data;
+        const dataType = datasetObj.type; // 'daily' or 'hourly'
+        const groupedVariables = groupVariables(dataSet, Groups);
+        // console.log(groupedVariables);
+        Object.keys(groupedVariables).forEach((groupName) => {
+            const group = groupedVariables[groupName];
+            const unit = group.unit;
+            const yAxisID = `y-axis-${axisIndex}`;
 
-        yAxes[`y-axis-${index}`] = {
-            type: 'linear',
-            display: false,
-            position: index % 2 === 0 ? 'left' : 'right',
-            ticks: {
-                beginAtZero: true,
-                font:{
-                    size:14,
-                    family: '"Roboto", sans-serif'
+            // Define Y-Axis for each group
+            yAxes[yAxisID] = {
+                type: 'linear',
+                display: false,
+                position: axisIndex % 2 === 0 ? 'left' : 'right',
+                ticks: {
+                    beginAtZero: true,
+                    font: {
+                        size: 14,
+                        family: '"Roboto", sans-serif'
+                    },
+                    color: '#000000'
                 },
-                color:'#000000'
-            },
-            grid:{
-                display:false
-            },
-            title: {
-                display: true,
-                text: unit,
-                font: {
-                    size: 14,
-                    family: '"Roboto", sans-serif',
-                    weight: "bold"
+                grid: {
+                    display: false
                 },
-                color: '#000000'
-            }
-        };
+                title: {
+                    display: true,
+                    text: unit,
+                    font: {
+                        size: 14,
+                        family: '"Roboto", sans-serif',
+                        weight: 'bold'
+                    },
+                    color: '#000000'
+                }
+            };
 
-        group.variables.forEach((variable, variableIndex) => {
-            const colors = [
-                'rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)', 
-                'rgba(75, 192, 192, 0.2)', 'rgba(153, 102, 255, 0.2)', 
-                'rgba(255, 159, 64, 0.2)'
-            ];
-            const borderColors = [
-                'rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 
-                'rgba(75, 192, 192, 1)', 'rgba(153, 102, 255, 1)', 
-                'rgba(255, 159, 64, 1)'
-            ];
+            group.variables.forEach((variable, variableIndex) => {
+                const colors = [
+                    'rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)',
+                    'rgba(75, 192, 192, 0.2)', 'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ];
+                const borderColors = [
+                    'rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)',
+                    'rgba(75, 192, 192, 1)', 'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ];
 
-            datasets.push({
-                label: variable.name,
-                data: variable.values,
-                backgroundColor: colors[(2 * index + variableIndex) % colors.length],
-                borderColor: borderColors[(2 * index + variableIndex) % borderColors.length],
-                borderWidth: 2,
-                pointRadius: 0,
-                fill: false,
-                yAxisID: `y-axis-${index}`
+                // Create data points with x and y values
+                const dataPoints = dataSet.time.map((time, idx) => ({
+                    x: time,
+                    y: variable.values[idx]
+                }));
+
+                datasets.push({
+                    label: `${variable.name} (${dataType})`,
+                    data: dataPoints,
+                    backgroundColor: colors[(2 * axisIndex + variableIndex) % colors.length],
+                    borderColor: borderColors[(2 * axisIndex + variableIndex) % borderColors.length],
+                    borderWidth: 2,
+                    pointRadius: 0,
+                    fill: false,
+                    yAxisID: yAxisID,
+                });
             });
-            console.log(datasets);
+
+            axisIndex++;
         });
     });
 
@@ -739,11 +524,11 @@ function plotGraph(data) {
     if (myChart) {
         myChart.destroy();
     }
-    console.log(processedData.data.time)
+    
+
     myChart = new Chart(ctx, {
         type: 'line',
         data: {
-            labels: processedData.data.time,
             datasets: datasets
         },
         options: {
@@ -762,12 +547,12 @@ function plotGraph(data) {
                         unit: `${processedData.scheme}`,
                         tooltipFormat: processedData.scheme === 'year' ? 'YYYY' : (processedData.scheme === 'month' ? 'YYYY-MM' : 'YYYY-MM-DD HH:mm')
                     },
-                    ticks:{
-                        font:{
-                            size:14,
+                    ticks: {
+                        font: {
+                            size: 14,
                             family: '"Roboto", sans-serif'
                         },
-                        color:'#000000'
+                        color: '#000000'
                     },
                     title: {
                         display: true,
@@ -775,7 +560,7 @@ function plotGraph(data) {
                         font: {
                             size: 14,
                             family: '"Roboto", sans-serif',
-                            weight: "bold"
+                            weight: 'bold'
                         },
                         color: '#000000'
                     }
@@ -810,24 +595,22 @@ function plotGraph(data) {
 
                         chartLegend.update();
                     },
-                    labels:{
-                        font:{
+                    labels: {
+                        font: {
                             family: '"Roboto", sans-serif',
                             size: 14
                         }
-                    }                    
+                    }
                 }
             }
         }
     });
-
-    myChart.data.datasets.forEach(dataset => {
+        myChart.data.datasets.forEach(dataset => {
         const yAxisID = dataset.yAxisID;
         if (!dataset.hidden) {
             myChart.options.scales[yAxisID].display = true;
         }
     });
-
     Chart.defaults.color = '#000';
     Chart.defaults.font.size = 14;
 
@@ -835,27 +618,4 @@ function plotGraph(data) {
 }
 
 
-function mergeData(data1, data2) {
-    const mergedData = { ...data1 };
-
-    // Merge time arrays
-    if (!mergedData.time) {
-        mergedData.time = [];
-    }
-    if (data2.time) {
-        mergedData.time = mergedData.time.concat(data2.time);
-    }
-
-    // Merge variables
-    for (const key in data2) {
-        if (key !== 'time' && data2.hasOwnProperty(key)) {
-            if (!mergedData[key]) {
-                mergedData[key] = [];
-            }
-            mergedData[key] = mergedData[key].concat(data2[key]);
-        }
-    }
-
-    return mergedData;
-}
 
