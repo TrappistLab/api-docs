@@ -15,6 +15,7 @@ const checkboxes = document.querySelectorAll('input[type="checkbox"]');
 const temperatureUnitSelect = document.getElementById('temperature_unit');
 const windSpeedUnitSelect = document.getElementById('wind_speed_unit');
 const pressureUnitSelect = document.getElementById('pressure_unit');
+const apiKey = document.getElementById('apikey');
 const dailyCheckboxes = document.querySelectorAll('input.daily-variable[type="checkbox"]');
 const hourlyCheckboxes = document.querySelectorAll('input.hourly-variable[type="checkbox"]');
 
@@ -55,6 +56,7 @@ hourlyCheckboxes.forEach(checkbox => {
     longitudeInput.addEventListener('input', updateURL);
     startInput.addEventListener('input', updateURL);
     endInput.addEventListener('input', updateURL);
+    apiKey.addEventListener('input', updateURL);
 
     temperatureUnitSelect.addEventListener('change', updateURL);
     windSpeedUnitSelect.addEventListener('change', updateURL);
@@ -74,10 +76,12 @@ function updateURL(){
         const longitude = longitudeInput.value;
         const start = startInput.value;
         const end = endInput.value;
+        const key = apiKey.value;
+
     
         const dailyParams = dailyChecked.join(',');
         const hourlyParams = hourlyChecked.join(',');
-        let url = `https://api.climateinafrica.com/v1/historical?latitude=${latitude}&longitude=${longitude}&start_date=${start}&end_date=${end}`;
+        let url = `https://api.climateinafrica.com/v1/historical?apikey=${key}&latitude=${latitude}&longitude=${longitude}&start_date=${start}&end_date=${end}`;
         if (dailyParams.length > 0) {
             url += `&daily=${dailyParams}`;
         }
@@ -87,6 +91,7 @@ function updateURL(){
         const temperatureUnit = temperatureUnitSelect.value;
         const windSpeedUnit = windSpeedUnitSelect.value;
         const pressureUnit = pressureUnitSelect.value;
+        
         if (temperatureUnit) {
             url += `&temperature_unit=${temperatureUnit}`;
         }
