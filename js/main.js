@@ -360,10 +360,31 @@ function getData(){
 
         },
         error: function(xhr, status,error){
-            console.log(error);
-            console.error("Error getting data", error)
-            console.error("Error getting data", xhr)
-            console.error("Error getting data", status)
+            let message;
+            if(xhr.status==0){
+                message="Server error. Please try again letter"
+            }
+            else{
+                message = xhr.responseJSON.reason
+            }
+            loading.style.display = "none";
+            graphBox.style.backgroundColor = '#F6F8FA';
+            const errorDiv = document.createElement('div');
+            errorDiv.className = 'alert alert-danger d-flex align-items-center';
+            errorDiv.role = 'alert';
+            errorDiv.innerHTML = `
+                            <div>
+                                <i class="fas fa-exclamation-circle"></i> An error occurred: ${message}(${xhr.status}).
+                                <button type="submit" class="btn btn-danger ms-2" onclick="getData()" style="border-radius: 50px; padding: 12px 24px; box-shadow: none;font-size: 14px; text-transform: unset;">
+                                    <i class="fas fa-arrow-rotate-right" style="color: white;"></i> Reload Chart
+                                </button>
+                            </div>
+                        `;
+                        errorDiv.style.backgroundColor = '#f8d7da';
+                        errorDiv.style.color = '#721c24';
+                        errorDiv.style.border = '1px solid #f5c6cb';
+                        graphBox.innerHTML = ''; 
+                        graphBox.appendChild(errorDiv);  
         }
     });
 }
