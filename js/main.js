@@ -126,9 +126,13 @@ const ForecastGroups = {
         'variables': ['medium_cloud_cover','low_cloud_cover','high_cloud_cover','total_cloud_cover'],
         'unit':'0-1'
     },
+    'forecast_precip_rate': {
+        'variables': ['surface_convective_precipitation_rate','surface_precipitation_rate'],
+        'unit':'kg m**-2 s**-1'
+    },
     'forecast_precip': {
-        'variables': ['surface_convective_precipitation','surface_total_precipitation','surface_convective_precipitation_rate','surface_precipitation_rate'],
-        'unit':'mm or kg m**-2 s**-1' // adjust as needed based on variable units
+        'variables': ['surface_convective_precipitation','surface_total_precipitation'],
+        'unit':'mm' 
     },
     'hum': {
         'variables': ['2m_relative_humidity','soil_moisture_l1','soil_moisture_l2','soil_moisture_l3','soil_moisture_l4', 'surface_albedo'],
