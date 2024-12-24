@@ -139,867 +139,1253 @@ pre {
     <!-- Right elements -->
   </div>
 </nav>
+
       <div class="container-fluid my-5" style="border: 2px solid #0257F5; border-radius: 12px;">
     
         <div class="row d-flex justify-content-start">
-    
+      <!-- Tabs navs -->
           <div class="col-auto" style="padding: 8px 0px;">
-            <!-- Tabs navs -->
+    
+          
     <ul class="nav nav-tabs mb-3" id="ex-with-icons" role="tablist" style="border-radius: 12px;">
-      <li class="nav-item" role="presentation">
+      <li class="nav-item" role="presentation"></li>
         <a data-mdb-tab-init class="nav-link active" id="ex-with-icons-tab-1" href="#ex-with-icons-tabs-1" role="tab"
-          aria-controls="ex-with-icons-tabs-1" aria-selected="true" style="color: #0257F5; text-transform: unset; font-size: 14px;"><i class="fas fa-chart-pie fa-fw m-2"></i>Historical Data</a>
+          aria-controls="ex-with-icons-tabs-1" aria-selected="true" style="color: #0257F5; text-transform: unset; font-size: 14px;"onclick="setMode('forecast')"><i class="fas fa-chart-line fa-fw m-2"></i>Weather Forecast</a>
       </li>
+  
       <li class="nav-item" role="presentation">
-        <a data-mdb-tab-init class="nav-link" id="ex-with-icons-tab-2" href="" role="tab"
-          aria-controls="ex-with-icons-tabs-2" aria-selected="false" style="color: #0257F5; text-transform: unset; font-size: 14px;"><i class="fas fa-chart-line fa-fw me-2"></i>Weather Forecast<span class="badge badge-success m-2 ">COMING SOON</span></a>
+        <a data-mdb-tab-init class="nav-link" id="ex-with-icons-tab-2" href="#ex-with-icons-tabs-2" role="tab"
+          aria-controls="ex-with-icons-tabs-2" aria-selected="true" style="color: #0257F5; text-transform: unset; font-size: 14px;" onclick="setMode('historical')"><i class="fas fa-chart-pie fa-fw m-2"></i>Historical Data</a>
       </li>
+      
     </ul>
-    <!-- Tabs navs -->
+          
+        </div>
+    <!--End of  Tabs navs -->
 
     <!-- Tabs content -->
     <div class="tab-content" id="ex-with-icons-content">
-      <div class="tab-pane fade show active" id="ex-with-icons-tabs-1" role="tabpanel" aria-labelledby="ex-with-icons-tab-1">
-        <div class="container-fluid my-5 px-3">
-        
-          <!-- <div class="row justify-content-start mx-5"> -->
-      
-            <!-- <div class="col-12"> -->
-              <h2>Fetch Historical Data</h2>
 
+
+        <!-- Forecast Tab -->
+        <div class="tab-pane fade show active" id="ex-with-icons-tabs-1" role="tabpanel" aria-labelledby="ex-with-icons-tab-1">
+          <div class="container-fluid my-5 px-3">
+            <h2>Weather Forecast</h2>
+            <!-- Forecast data fields -->
+            <div class="container-fluid my-5">
+              <!-- Location Fields -->
               <div class="container-fluid my-5">
-              
-                  <div class="row d-flex justify-content-start">
-              
-                    <div class="col-fluid">
-                      <h4>Input Location</h4>
-                      <div class="row g-2">
-                        <div class="row g-2">
-                          <div class="col-12 col-sm-6">
-                            <!-- Latitude input -->
-                            <div data-mdb-input-init class="form-outline">
-                              <input type="text" id="latitude" value="6.471" class="form-control"/>
-                              <label class="form-label" for="latitude">Input Latitude</label>
-                            </div>
-                          </div>
-                          <div class="col-12 col-sm-6">
-                            <!-- Longitude input -->
-                            <div data-mdb-input-init class="form-outline">
-                              <input type="text" id="longitude" value="3.6356" class="form-control"/>
-                              <label class="form-label" for="longitude">Input Longitude</label>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="row g-2">
-                          <div class="col-fluid">OR</div>
-                          <div class="col-fluid">
-                          <button type="button" class="btn btn-outline-primary" data-mdb-ripple-init data-mdb-ripple-color="dark" data-mdb-modal-init data-mdb-target="#searchLocation" style="background-color: #0257F5; color: white; border-radius: 50px; padding: 12px 24px; border: none;box-shadow: none;font-size: 14px; text-transform: unset;"><i class="fas fa-magnifying-glass"></i> Search by Address</button>
-                          </div>
-                        </div>
-                      </div>
-                      
-                      
-
-              
-                  </div>
-              
-                
-                  <div class="container-fluid my-5">
-                
-                    <div class="row d-flex justify-content-start">
-                
-                      <div class="col-fluid">
-                          <h4>Input Time Interval</h4>
-                          <div class="row g-2">
-                            <div class="col-12 col-sm-6">
-                              <!-- Start Date input -->
-                              <div data-mdb-input-init class="form-outline">
-                                <input type="date" id="start-date" class="form-control date-picker" data-mdb-toggle="datepicker" placeholder="YYYY-MM-DD" value="1990-01-01"/>
-                                <label class="form-label" for="start-date">Input Start Date</label>
-                              </div>
-                            </div>
-                            <div class="col-12 col-sm-6">
-                              <!-- End Date input -->
-                              <div data-mdb-input-init class="form-outline">
-                                <input type="date" value="1990-01-10" id="end-date" class="form-control date-picker" data-mdb-toggle="datepicker"/>
-                                <label class="form-label" for="end-date">Input End Date</label>
-                              </div>
-                            </div>
-                          </div>
-                      </div>
-                
-                    </div>
-                
-                  </div>
-                  
+              <div class="row d-flex justify-content-start">
+          
                 <div class="col-fluid">
-                  <h4>Settings</h4>
-                <div class="row d-flex justify-content-start"> 
-                  <div class="col-12 col-sm-4">
-                    <div class="form-floating mb-3">
-                      <select class="form-select" name="temperature_unit" id="temperature_unit" aria-label="Temperature Unit">
-                        <option value="">Kelvin °K</option>
-                        <option value="f">Fahrenheit °F</option>
-                        <option value="c">Celsius °C</option>
-                      </select> <label for="temperature_unit">Temperature Unit</label>
-                    </div>
-                  </div> 
-                  <div class="col-12 col-sm-4">
-                    <div class="form-floating mb-3">
-                      <select class="form-select" name="wind_speed_unit" id="wind_speed_unit" aria-label="Windspeed Unit">
-                        <option value="">m/s</option>
-                        <option value="km/hr">Km/h</option>
-                        <option value="knot">Knots</option>
-                      </select>
-                       <label for="wind_speed_unit">Wind Speed Unit</label>
+                  <h4>Input Location</h4>
+                  <div class="row g-2">
+                    <div class="row g-2">
+                      <div class="col-12 col-sm-6">
+                        <!-- Latitude input -->
+                        <div data-mdb-input-init class="form-outline">
+                          <input type="text" id="latitude2" value="6.471" class="form-control"/>
+                          <label class="form-label" for="latitude">Input Latitude</label>
+                        </div>
                       </div>
-                    </div> 
-                    <div class="col-12 col-sm-4"><div class="form-floating mb-3">
-                      <select class="form-select" name="pressure_unit" id="pressure_unit" aria-label="Pressure Unit">
-                        <option value="">hpa</option>
-                        <option value="mmhg">mmhg</option>
-                      </select> <label for="pressure_unit">Pressure Unit</label>
+                      <div class="col-12 col-sm-6">
+                        <!-- Longitude input -->
+                        <div data-mdb-input-init class="form-outline">
+                          <input type="text" id="longitude2" value="3.6356" class="form-control"/>
+                          <label class="form-label" for="longitude">Input Longitude</label>
+                        </div>
+                      </div>
                     </div>
-                  </div> 
-                 
-                </div>
-                </div>
+                    <div class="row g-2">
+                      <div class="col-fluid">OR</div>
+                      <div class="col-fluid">
+                      <button type="button" class="btn btn-outline-primary" data-mdb-ripple-init data-mdb-ripple-color="dark" data-mdb-modal-init data-mdb-target="#searchLocation" style="background-color: #0257F5; color: white; border-radius: 50px; padding: 12px 24px; border: none;box-shadow: none;font-size: 14px; text-transform: unset;"><i class="fas fa-magnifying-glass"></i> Search by Address</button>
+                      </div>
+                    </div>
                   </div>
-                  <div class="row">
-                    <div class="col-md-3 mb-4">
-                      <div class="form-floating">
-                        <input type="text" class="form-control" name="apikey" id="apikey"> 
-                        <label for="apikey">API Key</label>
-                      </div></div> 
-                      <div class="col-md-9"><div class="alert alert-primary" role="alert">Click <a href="https://profile.climateinafrica.com"><u>here</u></a> to get your Api Key.</div></div></div>
-
-
-                    <div class="container-fluid my-5">
+              </div>
+            </div></div>
+            <!-- End of location fields -->
+              
+            <!-- Time Fields -->
+          <div class="container-fluid my-5">
                 
-                    <div class="row d-flex justify-content-start">
+                      <div class="row d-flex justify-content-start">
+                  
+                        <div class="col-fluid">
+                            <h4>Input Time Interval</h4>
+                            <div class="row g-2">
+                              <div class="col-12 col-sm-6">
+                                <!-- Start Date input -->
+                                <div data-mdb-input-init class="form-outline">
+                                  <input type="date" id="start-date2" class="form-control date-picker" data-mdb-toggle="datepicker" placeholder="YYYY-MM-DD"/>
+                                  <label class="form-label" for="start-date">Input Start Date</label>
+                                </div>
+                              </div>
+                              <div class="col-12 col-sm-6">
+                                <!-- End Date input -->
+                                <div data-mdb-input-init class="form-outline">
+                                  <input type="date" id="end-date2" class="form-control date-picker" data-mdb-toggle="datepicker"/>
+                                  <label class="form-label" for="end-date">Input End Date</label>
+                                </div>
+                              </div>
+                            </div>
+                        </div>
+                  
+                      </div>
+                  
+                    </div>
+                    <!-- End of Time fields -->
+               <!-- Settings field -->
+               <div class="container-fluid my-5">
                 
-                      <div class="col-lg-12 col-md-12">
-                                                <!-- Hourly Variables -->
-                                                <h4 class="mt-5">Hourly Weather Variables </h4>
+                <div class="row d-flex justify-content-start">
+        <div class="col-fluid">
+                                    <h4>Settings</h4>
+                                  <div class="row d-flex justify-content-start"> 
+                                    <div class="col-12 col-sm-4">
+                                      <div class="form-floating mb-3">
+                                        <select class="form-select" name="temperature_unit" id="temperature_unit" aria-label="Temperature Unit">
+                                          <option value="">Kelvin °K</option>
+                                          <option value="f">Fahrenheit °F</option>
+                                          <option value="c">Celsius °C</option>
+                                        </select> <label for="temperature_unit">Temperature Unit</label>
+                                      </div>
+                                    </div> 
+                                    <div class="col-12 col-sm-4">
+                                      <div class="form-floating mb-3">
+                                        <select class="form-select" name="wind_speed_unit" id="wind_speed_unit" aria-label="Windspeed Unit">
+                                          <option value="">m/s</option>
+                                          <option value="km/hr">Km/h</option>
+                                          <option value="knot">Knots</option>
+                                        </select>
+                                         <label for="wind_speed_unit">Wind Speed Unit</label>
+                                        </div>
+                                      </div> 
+                                      <div class="col-12 col-sm-4"><div class="form-floating mb-3">
+                                        <select class="form-select" name="pressure_unit" id="pressure_unit" aria-label="Pressure Unit">
+                                          <option value="">hpa</option>
+                                          <option value="mmhg">mmhg</option>
+                                        </select> <label for="pressure_unit">Pressure Unit</label>
+                                      </div>
+                                    </div> 
+                                   
+                                  </div>
+              </div>
+                </div>
+              </div>
+            <!-- End of Setting field -->
+          
+             <!-- API Key -->
+             <div class="container-fluid my-5">
+                
+              <div class="row d-flex justify-content-start">
+                    <div class="my-3">
+             
+              <div class="row">
+                <div class="col-md-3 mb-4">
+                  <div class="form-floating">
+                    <input type="text" class="form-control" name="apikey" id="apikey2">
+                    <label for="apikey">API Key</label>
+                  </div>
+                </div>
+                <div class="col-md-9">
+                  <div class="alert alert-primary" role="alert">Click 
+                    <a href="https://docs.climateinafrica.com"><u>here</u></a> to get your Api Key.
+                  </div>
+                </div>
+              </div>
+            </div>
+              </div></div>
+      <!-- End of Api key field -->
+    </div>
+    <!-- End of forecast data fields -->
 
-                                                <div class="row g-4 d-flex justify-content-start my-1">
-                                                <div class="col-12 col-lg-3 col-md-4 col-sm-6">
-                                                  <div class="form-check">
-                                                    <input class="form-check-input hourly-variable" type="checkbox" value="" id="air_temperature" checked />
-                                                    <label class="form-check-label" for="air_temperature">Temperature (2m)</label>
-                                                  </div>
-                                                </div>
-                                             
-                                              <div class="col-12 col-lg-3 col-md-4 col-sm-6">
-                                                <div class="form-check">
-                                                  <input class="form-check-input hourly-variable" type="checkbox" value="" id="wind_speed_10m" />
-                                                  <label class="form-check-label" for="wind_speed_10m">Wind Speed (10m)</label>
-                                                </div>
-                                              </div>
-                                              <div class="col-12 col-lg-3 col-md-4 col-sm-6">
-                                                <div class="form-check">
-                                                  <input class="form-check-input hourly-variable" type="checkbox" value="" id="wind_speed_100m" />
-                                                  <label class="form-check-label" for="wind_speed_100m">Wind Speed (100m)</label>
-                                                </div>
-                                              </div>
-                                              <div class="col-12 col-lg-3 col-md-4 col-sm-6">
-                                                <div class="form-check">
-                                                  <input class="form-check-input hourly-variable" type="checkbox" value="" id="2m_dewpoint_temperature" />
-                                                  <label class="form-check-label" for="2m_dewpoint_temperature">2m Dew Point Temperature</label>
-                                                </div>
-                                              </div>
-                                              
-                                            </div>
-                                              <div class="row g-4 d-flex justify-content-start my-1">
-                                                <div class="col-12 col-lg-3 col-md-4 col-sm-6">
-                                                  <div class="form-check">
-                                                    <input class="form-check-input hourly-variable" type="checkbox" value="" id="soil_temperature_l1" />
-                                                    <label class="form-check-label" for="soil_temperature_l1">Soil Temperature (0-10cm)</label>
-                                                  </div>
-                                                </div>
-                                                <div class="col-12 col-lg-3 col-md-4 col-sm-6">
-                                                  <div class="form-check">
-                                                    <input class="form-check-input hourly-variable" type="checkbox" value="" id="soil_temperature_l2" />
-                                                    <label class="form-check-label" for="soil_temperature_l2">Soil Temperature (11-25cm)</label>
-                                                  </div>
-                                                </div>
-                                                <div class="col-12 col-lg-3 col-md-4 col-sm-6">
-                                                  <div class="form-check">
-                                                    <input class="form-check-input hourly-variable" type="checkbox" value="" id="soil_temperature_l3" />
-                                                    <label class="form-check-label" for="soil_temperature_l3">Soil Temperature (26-50cm)</label>
-                                                  </div>
-                                                </div>
-                                                <div class="col-12 col-lg-3 col-md-4 col-sm-6">
-                                                  <div class="form-check">
-                                                    <input class="form-check-input hourly-variable" type="checkbox" value="" id="soil_temperature_l4" />
-                                                    <label class="form-check-label" for="soil_temperature_l4">Soil Temperature (50cm and above)</label>
-                                                  </div>
-                                                </div>
-                                                <div class="col-12 col-lg-3 col-md-4 col-sm-6">
-                                                  <div class="form-check">
-                                                    <input class="form-check-input hourly-variable" type="checkbox" value="" id="10m_instantaneous_wind_gusts" />
-                                                    <label class="form-check-label" for="10m_instantaneous_wind_gusts">10m Instantaneous Wind Gust</label>
-                                                  </div>
-                                                </div>
-                                              </div>
-                                              <br>
-                          <h4>Daily Weather Variables</h4>
-                          <div class="row g-4 d-flex justify-content-start my-1">
-                            <div class="col-12 col-lg-3 col-md-4 col-sm-6">
-                              <div class="form-check">
-                                <input class="form-check-input daily-variable" type="checkbox" value="" id="air_temperature_min" checked />
-                                <label class="form-check-label" for="air_temperature_min">Minimum Temperature</label>
-                              </div>
-                            </div>
-                            <div class="col-12 col-lg-3 col-md-4 col-sm-6">
-                              <div class="form-check">
-                                <input class="form-check-input daily-variable" type="checkbox" value="" id="air_temperature_max" />
-                                <label class="form-check-label" for="air_temperature_max">Maximum Temperature</label>
-                              </div>
-                            </div>
-                            <div class="col-12 col-lg-3 col-md-4 col-sm-6">
-                              <div class="form-check">
-                                <input class="form-check-input daily-variable" type="checkbox" value="" id="wind_speed_10m" />
-                                <label class="form-check-label" for="wind_speed_10m">Wind Speed (10m)</label>
-                              </div>
-                            </div>
-                            <div class="col-12 col-lg-3 col-md-4 col-sm-6">
-                              <div class="form-check">
-                                <input class="form-check-input daily-variable" type="checkbox" value="" id="relative_humidity_min" />
-                                <label class="form-check-label" for="relative_humidity_min">Minimum Relative Humidity</label>
-                              </div>
-                            </div>
-                          </div>
-                        <div class="row g-4 d-flex justify-content-start my-1">
-                          <div class="col-12 col-lg-3 col-md-4 col-sm-6">
-                            <div class="form-check">
-                              <input class="form-check-input daily-variable" type="checkbox" value="" id="relative_humidity_max" />
-                              <label class="form-check-label" for="relative_humidity_max">Maximum Relative Humidity</label>
-                            </div>
-                          </div>
-                          <div class="col-12 col-lg-3 col-md-4 col-sm-6">
-                            <div class="form-check">
-                              <input class="form-check-input daily-variable" type="checkbox" value="" id="evaporation" />
-                              <label class="form-check-label" for="evaporation">Evaporation</label>
-                            </div>
-                          </div>
-                          <div class="col-12 col-lg-3 col-md-4 col-sm-6">
-                            <div class="form-check">
-                              <input class="form-check-input daily-variable" type="checkbox" value="" id="surface_pressure" />
-                              <label class="form-check-label" for="surface_pressure">Surface Pressure</label>
-                            </div>
-                          </div>
-                          <div class="col-12 col-lg-3 col-md-4 col-sm-6">
-                            <div class="form-check">
-                              <input class="form-check-input daily-variable" type="checkbox" value="" id="sensible_heat_flux" />
-                              <label class="form-check-label" for="sensible_heat_flux">Sensible Heat Flux</label>
-                            </div>
-                          </div>
-                        
-
-                        </div>
-                        <div class="row g-4 d-flex justify-content-start my-1">
-                          <div class="col-12 col-lg-3 col-md-4 col-sm-6">
-                            <div class="form-check">
-                              <input class="form-check-input daily-variable" type="checkbox" value="" id="top_net_solar" />
-                              <label class="form-check-label" for="top_net_solar">Top Net Solar Irradiation</label>
-                            </div>
-                          </div>
-                          <div class="col-12 col-lg-3 col-md-4 col-sm-6">
-                            <div class="form-check">
-                              <input class="form-check-input daily-variable" type="checkbox" value="" id="surface_net_thermal" />
-                              <label class="form-check-label" for="surface_net_thermal">Surface Net Thermal Irradiation</label>
-                            </div>
-                          </div>
-                          <div class="col-12 col-lg-3 col-md-4 col-sm-6">
-                            <div class="form-check">
-                              <input class="form-check-input daily-variable" type="checkbox" value="" id="surface_net_solar" />
-                              <label class="form-check-label" for="surface_net_solar">Surface Net Solar Irradiation</label>
-                            </div>
-                          </div><div class="col-12 col-lg-3 col-md-4 col-sm-6">
-                            <div class="form-check">
-                              <input class="form-check-input daily-variable" type="checkbox" value="" id="top_net_thermal" />
-                              <label class="form-check-label" for="top_net_thermal">Top Net Thermal Irradiation</label>
-                            </div>
-                          </div>
-                          
-                        </div>
-                        <div class="row g-4 d-flex justify-content-start my-1">
-                          <div class="col-12 col-lg-3 col-md-4 col-sm-6">
-                            <div class="form-check">
-                              <input class="form-check-input daily-variable" type="checkbox" value="" id="soil_temperature_l1" />
-                              <label class="form-check-label" for="soil_temperature_l1">Soil Temperature (0-10cm)</label>
-                            </div>
-                          </div>
-                          <div class="col-12 col-lg-3 col-md-4 col-sm-6">
-                            <div class="form-check">
-                              <input class="form-check-input daily-variable" type="checkbox" value="" id="soil_temperature_l2" />
-                              <label class="form-check-label" for="soil_temperature_l2">Soil Temperature (11-25cm)</label>
-                            </div>
-                          </div>
-                          <div class="col-12 col-lg-3 col-md-4 col-sm-6">
-                            <div class="form-check">
-                              <input class="form-check-input daily-variable" type="checkbox" value="" id="soil_temperature_l3" />
-                              <label class="form-check-label" for="soil_temperature_l3">Soil Temperature (26-50cm)</label>
-                            </div>
-                          </div>
-                          <div class="col-12 col-lg-3 col-md-4 col-sm-6">
-                            <div class="form-check">
-                              <input class="form-check-input daily-variable" type="checkbox" value="" id="soil_temperature_l4" />
-                              <label class="form-check-label" for="soil_temperature_l4">Soil Temperature (50cm and above)</label>
-                            </div>
-                          </div>
-                          
-                        </div>
-                        <div class="row g-4 d-flex justify-content-start my-1">
-                          <div class="col-12 col-lg-3 col-md-4 col-sm-6">
-                            <div class="form-check">
-                              <input class="form-check-input daily-variable" type="checkbox" value="" id="potential_evaporation" />
-                              <label class="form-check-label" for="potential_evaporation">Potential Evaporation</label>
-                            </div>
-                          </div>
-                          <div class="col-12 col-lg-3 col-md-4 col-sm-6">
-                            <div class="form-check">
-                              <input class="form-check-input daily-variable" type="checkbox" value="" id="wind_speed_100m" />
-                              <label class="form-check-label" for="100m_wind_speed">100m Wind Speed</label>
-                            </div>
-                          </div>
-                          <div class="col-12 col-lg-3 col-md-4 col-sm-6">
-                            <div class="form-check">
-                              <input class="form-check-input daily-variable" type="checkbox" value="" id="2m_dewpoint_temperature" />
-                              <label class="form-check-label" for="2m_dewpoint_temperature">2m Dew Point Temperature</label>
-                            </div>
-                          </div>
-                          <div class="col-12 col-lg-3 col-md-4 col-sm-6">
-                            <div class="form-check">
-                              <input class="form-check-input daily-variable" type="checkbox" value="" id="low_cloud_cover" />
-                              <label class="form-check-label" for="low_cloud_cover">Low Cloud Cover</label>
-                            </div>
-                          </div>
-                        </div>
-                        
-                        <div class="row g-4 d-flex justify-content-start my-1">
-                          <div class="col-12 col-lg-3 col-md-4 col-sm-6">
-                            <div class="form-check">
-                              <input class="form-check-input daily-variable" type="checkbox" value="" id="high_cloud_cover" />
-                              <label class="form-check-label" for="high_cloud_cover">High Cloud Cover</label>
-                            </div>
-                          </div>
-                          <div class="col-12 col-lg-3 col-md-4 col-sm-6">
-                            <div class="form-check">
-                              <input class="form-check-input daily-variable" type="checkbox" value="" id="medium_cloud_cover" />
-                              <label class="form-check-label" for="medium_cloud_cover">Medium Cloud Cover</label>
-                            </div>
-                          </div>
-                          <div class="col-12 col-lg-3 col-md-4 col-sm-6">
-                            <div class="form-check">
-                              <input class="form-check-input daily-variable" type="checkbox" value="" id="total_cloud_cover" />
-                              <label class="form-check-label" for="total_cloud_cover">Total Cloud Cover</label>
-                            </div>
-                          </div>
-                          <div class="col-12 col-lg-3 col-md-4 col-sm-6">
-                            <div class="form-check">
-                              <input class="form-check-input daily-variable" type="checkbox" value="" id="runoff" />
-                              <label class="form-check-label" for="runoff">Runoff</label>
-                            </div>
-                          </div>
-                        </div>
-
-                        <div class="row g-4 d-flex justify-content-start my-1">
-                          <div class="col-12 col-lg-3 col-md-4 col-sm-6">
-                            <div class="form-check">
-                              <input class="form-check-input daily-variable" type="checkbox" value="" id="subsurface_runoff" />
-                              <label class="form-check-label" for="subsurface_runoff">Subsurface Runoff</label>
-                            </div>
-                          </div>
-                          <div class="col-12 col-lg-3 col-md-4 col-sm-6">
-                            <div class="form-check">
-                              <input class="form-check-input daily-variable" type="checkbox" value="" id="surface_runoff" />
-                              <label class="form-check-label" for="surface_runoff">Surface Runoff</label>
-                            </div>
-                          </div>
-                          <div class="col-12 col-lg-3 col-md-4 col-sm-6">
-                            <div class="form-check">
-                              <input class="form-check-input daily-variable" type="checkbox" value="" id="convective_rain_rate" />
-                              <label class="form-check-label" for="convective_rain_rate">Convective Rain Rate</label>
-                            </div>
-                          </div>
-                          <div class="col-12 col-lg-3 col-md-4 col-sm-6">
-                            <div class="form-check">
-                              <input class="form-check-input daily-variable" type="checkbox" value="" id="total_column_rain_water" />
-                              <label class="form-check-label" for="total_column_rain_water">Total Column Rain Rate</label>
-                            </div>
-                          </div>
-                        </div>
-
-                        <div class="row g-4 d-flex justify-content-start my-1">
-                          <div class="col-12 col-lg-3 col-md-4 col-sm-6">
-                            <div class="form-check">
-                              <input class="form-check-input daily-variable" type="checkbox" value="" id="total_precipitation" />
-                              <label class="form-check-label" for="total_precipitation">Total Precipitation</label>
-                            </div>
-                          </div>
-                          <div class="col-12 col-lg-3 col-md-4 col-sm-6">
-                            <div class="form-check">
-                              <input class="form-check-input daily-variable" type="checkbox" value="" id="10m_instantaneous_wind_gusts" />
-                              <label class="form-check-label" for="10m_instantaneous_wind_gusts">10m Instantaneous Wind Gust</label>
-                            </div>
-                          </div>
-                          <div class="col-12 col-lg-3 col-md-4 col-sm-6">
-                            <div class="form-check">
-                              <input class="form-check-input daily-variable" type="checkbox" value="" id="total_column_cloud_liquid_water" />
-                              <label class="form-check-label" for="total_column_cloud_liquid_water">Total Column Cloud Liquid Water</label>
-                            </div>
-                          </div>
-                        </div>
-
-                          
+    <!-- Forecas variables -->
+    <div class="container-fluid my-5">
+                    
+      <div class="row d-flex justify-content-start">
   
-                        <div class="col-auto my-5">
-                          <div class="graph-box">
-                            <div class="loading">
-                              <img src="/static/assets/loader.gif" alt="Loading..."  width="50" />
-                            </div>
-                            <div class="chart">
-                              <canvas id="chart"></canvas>
-                            </div>
-                              <div class="graph-text">
+        <div class="col-lg-12 col-md-12">
+         <!-- Forecast variable fields -->
+<h4 class="mt-5">Forecast Variables</h4>
 
-                                <div class="alert alert-primary d-flex align-items-center" role="alert">
-                                  <div><i class="fas fa-circle-info"></i> Parameters have changed.
-                                  <button type="submit" class="btn btn-primary ms-2" onclick="getData()" style="background-color: #0257F5; border-radius: 50px; padding: 12px 24px; box-shadow: none;font-size: 14px; text-transform: unset;"><i class="fas fa-arrow-rotate-right" style="color: white;" ></i> Reload Chart</button></div></div>
+
+<div class="row g-4 d-flex justify-content-start my-1">
+  <div class="col-12 col-lg-3 col-md-4 col-sm-6">
+    <div class="form-check">
+      <input class="form-check-input forecast-variable" type="checkbox" value="" id="2m_air_temperature" checked/>
+      <label class="form-check-label" for="2m_air_temperature">2m Air Temperature</label>
+    </div>
+  </div>
+  <div class="col-12 col-lg-3 col-md-4 col-sm-6">
+    <div class="form-check">
+      <input class="form-check-input forecast-variable" type="checkbox" value="" id="surface_total_precipitation" />
+      <label class="form-check-label" for="surface_total_precipitation">Total Precipitation</label>
+    </div>
+  </div>
+  <div class="col-12 col-lg-3 col-md-4 col-sm-6">
+    <div class="form-check">
+      <input class="form-check-input forecast-variable" type="checkbox" value="" id="2m_relative_humidity" />
+      <label class="form-check-label" for="2m_relative_humidity">2m Relative Humidity</label>
+    </div>
+  </div>
+  
+  <div class="col-12 col-lg-3 col-md-4 col-sm-6">
+    <div class="form-check">
+      <input class="form-check-input forecast-variable" type="checkbox" value="" id="wind_speed_10m" />
+      <label class="form-check-label" for="wind_speed_10m">Wind Speed (10m)</label>
+    </div>
+  </div>
+</div>
+<div class="row g-4 d-flex justify-content-start my-1">
+  <div class="col-12 col-lg-3 col-md-4 col-sm-6">
+    <div class="form-check">
+      <input class="form-check-input forecast-variable" type="checkbox" value="" id="surface_pressure" />
+      <label class="form-check-label" for="surface_pressure">Surface Pressure</label>
+    </div>
+  </div>
+  <div class="col-12 col-lg-3 col-md-4 col-sm-6">
+    <div class="form-check">
+      <input class="form-check-input forecast-variable" type="checkbox" value="" id="meansea_level_pressure" />
+      <label class="form-check-label" for="meansea_level_pressure">Mean Sea Level Pressure</label>
+    </div>
+  </div>
+  <div class="col-12 col-lg-3 col-md-4 col-sm-6">
+    <div class="form-check">
+      <input class="form-check-input forecast-variable" type="checkbox" value="" id="2m_dewpoint_temperature" />
+      <label class="form-check-label" for="2m_dewpoint_temperature">2m Dewpoint Temperature</label>
+    </div>
+  </div>
+  <div class="col-12 col-lg-3 col-md-4 col-sm-6">
+    <div class="form-check">
+      <input class="form-check-input forecast-variable" type="checkbox" value="" id="surface_wind_gust" />
+      <label class="form-check-label" for="surface_wind_gust">Surface Wind Gust</label>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+<div class="row g-4 d-flex justify-content-start my-1">
+  <div class="col-12 col-lg-3 col-md-4 col-sm-6">
+    <div class="form-check">
+      <input class="form-check-input forecast-variable" type="checkbox" value="" id="wind_speed_100m" />
+      <label class="form-check-label" for="wind_speed_100m">Wind Speed (100m)</label>
+    </div>
+  </div>
+  <div class="col-12 col-lg-3 col-md-4 col-sm-6">
+    <div class="form-check">
+      <input class="form-check-input forecast-variable" type="checkbox" value="" id="medium_cloud_cover" />
+      <label class="form-check-label" for="medium_cloud_cover">Medium Cloud Cover</label>
+    </div>
+  </div>
+  <div class="col-12 col-lg-3 col-md-4 col-sm-6">
+    <div class="form-check">
+      <input class="form-check-input forecast-variable" type="checkbox" value="" id="low_cloud_cover" />
+      <label class="form-check-label" for="low_cloud_cover">Low Cloud Cover</label>
+    </div>
+  </div>
+  <div class="col-12 col-lg-3 col-md-4 col-sm-6">
+    <div class="form-check">
+      <input class="form-check-input forecast-variable" type="checkbox" value="" id="high_cloud_cover" />
+      <label class="form-check-label" for="high_cloud_cover">High Cloud Cover</label>
+    </div>
+  </div>
+</div>
+
+<div class="row g-4 d-flex justify-content-start my-1">
+  <div class="col-12 col-lg-3 col-md-4 col-sm-6">
+    <div class="form-check">
+      <input class="form-check-input forecast-variable" type="checkbox" value="" id="total_cloud_cover" />
+      <label class="form-check-label" for="total_cloud_cover">Total Cloud Cover</label>
+    </div>
+  </div>
+  <div class="col-12 col-lg-3 col-md-4 col-sm-6">
+    <div class="form-check">
+      <input class="form-check-input forecast-variable" type="checkbox" value="" id="sunshine_duration" />
+      <label class="form-check-label" for="sunshine_duration">Sunshine Duration</label>
+    </div>
+  </div>
+  <div class="col-12 col-lg-3 col-md-4 col-sm-6">
+    <div class="form-check">
+      <input class="form-check-input forecast-variable" type="checkbox" value="" id="potential_evaporation" />
+      <label class="form-check-label" for="potential_evaporation">Potential Evaporation</label>
+    </div>
+  </div>
+  <div class="col-12 col-lg-3 col-md-4 col-sm-6">
+    <div class="form-check">
+      <input class="form-check-input forecast-variable" type="checkbox" value="" id="surface_albedo" />
+      <label class="form-check-label" for="surface_albedo">Surface Albedo</label>
+    </div>
+  </div>
+ 
+</div>
+
+<div class="row g-4 d-flex justify-content-start my-1">
+  <div class="col-12 col-lg-3 col-md-4 col-sm-6">
+    <div class="form-check">
+      <input class="form-check-input forecast-variable" type="checkbox" value="" id="soil_moisture_l1" />
+      <label class="form-check-label" for="soil_moisture_l1">Soil Moisture (0-10cm)</label>
+    </div>
+  </div>
+  <div class="col-12 col-lg-3 col-md-4 col-sm-6">
+    <div class="form-check">
+      <input class="form-check-input forecast-variable" type="checkbox" value="" id="soil_moisture_l2" />
+      <label class="form-check-label" for="soil_moisture_l2">Soil Moisture (10-40cm)</label>
+    </div>
+  </div>
+  <div class="col-12 col-lg-3 col-md-4 col-sm-6">
+    <div class="form-check">
+      <input class="form-check-input forecast-variable" type="checkbox" value="" id="soil_moisture_l3" />
+      <label class="form-check-label" for="soil_moisture_l3">Soil Moisture (40-100cm)</label>
+    </div>
+  </div>
+  <div class="col-12 col-lg-3 col-md-4 col-sm-6">
+    <div class="form-check">
+      <input class="form-check-input forecast-variable" type="checkbox" value="" id="soil_moisture_l4" />
+      <label class="form-check-label" for="soil_moisture_l4">Soil Moisture (100-200cm)</label>
+    </div>
+  </div>
+</div>
+<div class="row g-4 d-flex justify-content-start my-1">
+  <div class="col-12 col-lg-3 col-md-4 col-sm-6">
+    <div class="form-check">
+      <input class="form-check-input forecast-variable" type="checkbox" value="" id="surface_convective_precipitation" />
+      <label class="form-check-label" for="surface_convective_precipitation">Surface Convective Precipitation</label>
+    </div>
+  </div>
+  
+  <div class="col-12 col-lg-3 col-md-4 col-sm-6">
+    <div class="form-check">
+      <input class="form-check-input forecast-variable" type="checkbox" value="" id="surface_precipitation_rate" />
+      <label class="form-check-label" for="surface_precipitation_rate">Surface Precipitation Rate</label>
+    </div>
+  </div>
+  
+  <div class="col-12 col-lg-3 col-md-4 col-sm-6">
+    <div class="form-check">
+      <input class="form-check-input forecast-variable" type="checkbox" value="" id="surface_convective_precipitation_rate" />
+      <label class="form-check-label" for="surface_convective_precipitation_rate">Surface Convective Precipitation Rate</label>
+    </div>
+  </div>
+</div>
+<!-- End of forecast variable fields -->
+      <!-- Graph section -->
+            <div class="col-auto my-5">
+              <div class="graph-box2">
+                <div class="loading2">
+                  <img src="/static/assets/loader.gif" alt="Loading..." width="50" />
+                </div>
+                <div class="chart2">
+                  <canvas id="chart2"></canvas>
+                </div>
+                <div class="graph-text2">
+                  <div class="alert alert-primary d-flex align-items-center" role="alert">
+                    <div><i class="fas fa-circle-info"></i> Parameters have changed.
+                    <button type="submit" class="btn btn-primary ms-2" onclick="getData()" style="background-color: #0257F5; border-radius: 50px; padding: 12px 24px; box-shadow: none;font-size: 14px; text-transform: unset;"><i class="fas fa-arrow-rotate-right" style="color: white;"></i> Reload Chart</button></div>
+                  </div>
+                </div>
+
+                <div id="error2" style="display: none !important;"
+       class="alert alert-danger d-flex align-items-center"
+       role="alert"
+       ></div>
+              </div>
+
+
+
+              <div class="col-12 my-4">
+                <label for="api_url" class="form-label">API URL</label> <small class="text-muted"> (copy this URL into your application)</small>.
+                <input type="text" class="form-control mb-3" id="displayDiv2" readonly="">
+                <button type="button" class="btn btn-secondary my-1" style="color: #0257F5; border-radius: 50px; padding: 12px 24px; box-shadow: none;font-size: 14px; text-transform: unset;" data-mdb-ripple-init onclick="downloadData(this.id)" id="xlsx">Download XLSX</button>
+                <button type="button" class="btn btn-secondary my-1" style="color: #0257F5; border-radius: 50px; padding: 12px 24px; box-shadow: none;font-size: 14px; text-transform: unset;" data-mdb-ripple-init onclick="downloadData(this.id)" id="csv">Download CSV</button>
+              </div>
+            </div>
+            <!-- End of Graph section -->
+          </div>
+        </div>
+        </div>
+        <!-- End of Forecast variables -->
+        </div>
+
+        </div>
+    <!-- End of Forecast tab -->
+      
+
+          <!-- Historical Tab -->
+          <div class="tab-pane fade " id="ex-with-icons-tabs-2" role="tabpanel" aria-labelledby="ex-with-icons-tab-2">
+            <div class="container-fluid my-5 px-3">
+            
+              <!-- <div class="row justify-content-start mx-5"> -->
+          
+                <!-- <div class="col-12"> -->
+                  <h2>Fetch Historical Data</h2>
+                  <!-- Historical data fields -->
+                  <div class="container-fluid my-5">
+                  <!-- Location Fields -->
+                  <div class="container-fluid my-5">
+                      <div class="row d-flex justify-content-start">
+                  
+                        <div class="col-fluid">
+                          <h4>Input Location</h4>
+                          <div class="row g-2">
+                            <div class="row g-2">
+                              <div class="col-12 col-sm-6">
+                                <!-- Latitude input -->
+                                <div data-mdb-input-init class="form-outline">
+                                  <input type="text" id="latitude" value="6.471" class="form-control"/>
+                                  <label class="form-label" for="latitude">Input Latitude</label>
+                                </div>
+                              </div>
+                              <div class="col-12 col-sm-6">
+                                <!-- Longitude input -->
+                                <div data-mdb-input-init class="form-outline">
+                                  <input type="text" id="longitude" value="3.6356" class="form-control"/>
+                                  <label class="form-label" for="longitude">Input Longitude</label>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row g-2">
+                              <div class="col-fluid">OR</div>
+                              <div class="col-fluid">
+                              <button type="button" class="btn btn-outline-primary" data-mdb-ripple-init data-mdb-ripple-color="dark" data-mdb-modal-init data-mdb-target="#searchLocation" style="background-color: #0257F5; color: white; border-radius: 50px; padding: 12px 24px; border: none;box-shadow: none;font-size: 14px; text-transform: unset;"><i class="fas fa-magnifying-glass"></i> Search by Address</button>
+                              </div>
+                            </div>
+                          </div>
+                      </div>
+                    </div>
+                    <!-- End of location fields -->
+                    <!-- Time Fields -->
+                      <div class="container-fluid my-5">
+                    
+                        <div class="row d-flex justify-content-start">
+                    
+                          <div class="col-fluid">
+                              <h4>Input Time Interval</h4>
+                              <div class="row g-2">
+                                <div class="col-12 col-sm-6">
+                                  <!-- Start Date input -->
+                                  <div data-mdb-input-init class="form-outline">
+                                    <input type="date" id="start-date" class="form-control date-picker" data-mdb-toggle="datepicker" placeholder="YYYY-MM-DD" value="1990-01-01"/>
+                                    <label class="form-label" for="start-date">Input Start Date</label>
+                                  </div>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                  <!-- End Date input -->
+                                  <div data-mdb-input-init class="form-outline">
+                                    <input type="date" value="1990-01-10" id="end-date" class="form-control date-picker" data-mdb-toggle="datepicker"/>
+                                    <label class="form-label" for="end-date">Input End Date</label>
+                                  </div>
+                                </div>
                               </div>
                           </div>
-                          <div class="col-12 my-4"><label for="api_url" class="form-label">API URL</label> <small class="text-muted"> (copy this
-                            URL into your application)</small>.
-                            <input type="text" class="form-control mb-3" id="displayDiv" readonly="">
-                          <!-- <div class="displayDiv" id="displayDiv">/v1/historical?latitude=6.471&longitude=3.6356&start_date=1990-01-01&end_date=1990-01-10&daily=air_temperature_min</div></div> -->
-                          <button type="button" class="btn btn-secondary my-1" style="color: #0257F5; border-radius: 50px; padding: 12px 24px; box-shadow: none;font-size: 14px; text-transform: unset;" data-mdb-ripple-init onclick="downloadData(this.id)" id="xlsx">Download XLSX</button>
-                         <button type="button" class="btn btn-secondary my-1" style="color: #0257F5; border-radius: 50px; padding: 12px 24px; box-shadow: none;font-size: 14px; text-transform: unset;" data-mdb-ripple-init onclick="downloadData(this.id)" id="csv">Download CSV</button>
+                    
+                        </div>
+                    
+                      </div>
+                      <!-- End of Time fields -->
+                      
+                      <!-- Settings field -->
+                      <div class="container-fluid my-5">
+                
+                        <div class="row d-flex justify-content-start">
+                    <div class="col-fluid">
+                      <h4>Settings</h4>
+                    <div class="row d-flex justify-content-start"> 
+                      <div class="col-12 col-sm-4">
+                        <div class="form-floating mb-3">
+                          <select class="form-select" name="temperature_unit" id="temperature_unit" aria-label="Temperature Unit">
+                            <option value="">Kelvin °K</option>
+                            <option value="f">Fahrenheit °F</option>
+                            <option value="c">Celsius °C</option>
+                          </select> <label for="temperature_unit">Temperature Unit</label>
+                        </div>
+                      </div> 
+                      <div class="col-12 col-sm-4">
+                        <div class="form-floating mb-3">
+                          <select class="form-select" name="wind_speed_unit" id="wind_speed_unit" aria-label="Windspeed Unit">
+                            <option value="">m/s</option>
+                            <option value="km/hr">Km/h</option>
+                            <option value="knot">Knots</option>
+                          </select>
+                           <label for="wind_speed_unit">Wind Speed Unit</label>
+                          </div>
+                        </div> 
+                        <div class="col-12 col-sm-4"><div class="form-floating mb-3">
+                          <select class="form-select" name="pressure_unit" id="pressure_unit" aria-label="Pressure Unit">
+                            <option value="">hpa</option>
+                            <option value="mmhg">mmhg</option>
+                          </select> <label for="pressure_unit">Pressure Unit</label>
+                        </div>
+                      </div> 
+                     
+                    </div>
+                    </div>
+                        </div></div>
+                    <!-- End of Setting field -->
+                      
+                  
+
+                      <!-- API key field -->
+                      <div class="container-fluid my-5">
+                
+                        <div class="row d-flex justify-content-start">
+                      <div class="row">
+                        <div class="col-md-3 mb-4">
+                          <div class="form-floating">
+                            <input type="text" class="form-control" name="apikey" id="apikey"> 
+                            <label for="apikey">API Key</label>
+                          </div></div> 
+                          <div class="col-md-9"><div class="alert alert-primary" role="alert">Click <a href="https://docs.climateinafrica.com"><u>here</u></a> to get your Api Key.</div>
                         </div>
                       </div>
-                
+                        </div></div>
+                      <!-- End of Api Key field -->
+
                     </div>
-                
-                  </div>
-            <!-- </div> -->
-        
-            <!-- </div> -->
-        
-        </div>
-      </div>
-      
-    <!-- Tabs content -->
-    <h3>Historical Weather Data API Documentation</h3>
+                    <!-- End of historical data fields -->
 
-    <h4>Endpoint</h4>
-    <p><strong>GET /v1/historical</strong></p>
-
-    <h4>Description</h4>
-    <p>This API endpoint retrieves historical weather data for a specified location and time range. Users can request daily and hourly weather variables, specify units, and choose the output format.</p>
-
-    <h4>Query Parameters</h4>
-    <div class="table">
-      <table>
-        <tr>
-            <th>Parameter</th>
-            <th>Type</th>
-            <th>Required</th>
-            <th>Description</th>
-            <th>Possible Values</th>
-            <th>Default Value</th>
-        </tr>
-        <tr>
-            <td>format</td>
-            <td>String</td>
-            <td>No</td>
-            <td>Format of the response data.</td>
-            <td>'csv', 'xlsx', 'json'</td>
-            <td>'json'</td>
-        </tr>
-        <tr>
-          <td>latitude</td>
-            <td>Float</td>
-            <td>Yes</td>
-            <td>Latitude of the location.(Geographical WGS84 coordinates of the location)</td>
-            <td>-35 to 40 (Africa region)</td>
-            <td>6.471</td>
-        </tr>
-        <tr>
-          <td>longitude</td>
-          <td>Float</td>
-          <td>Yes</td>
-          <td>Longitude of the location.(Geographical WGS84 coordinates of the location)</td>
-          <td>-180 to 180</td>
-          <td>3.6356</td>
-        </tr>
-        <tr>
-            <td>daily</td>
-            <td>String</td>
-            <td>No</td>
-            <td>Comma-separated list of daily variables to retrieve.</td>
-            <td>See <a href="#daily-variables">Daily Variables</a></td>
-            <td>air_temperature_min</td>
-        </tr>
-        <tr>
-            <td>hourly</td>
-            <td>String</td>
-            <td>No</td>
-            <td>Comma-separated list of hourly variables to retrieve.</td>
-            <td>See <a href="#hourly-variables">Hourly Variables</a></td>
-            <td>air_temperature</td>
-        </tr>
-        <tr>
-            <td>start_date</td>
-            <td>String</td>
-            <td>Yes</td>
-            <td>Start date in 'YYYY-MM-DD' format.</td>
-            <td>Valid date</td>
-            <td>1990-01-01</td>
-        </tr>
-        <tr>
-            <td>end_date</td>
-            <td>String</td>
-            <td>Yes</td>
-            <td>End date in 'YYYY-MM-DD' format.</td>
-            <td>Valid date</td>
-            <td>1990-01-10</td>
-        </tr>
-        <tr>
-            <td>temperature_unit</td>
-            <td>String</td>
-            <td>No</td>
-            <td>Unit for temperature variables.</td>
-            <td>'C', 'F', 'K'</td>
-            <td>'K'</td>
-        </tr>
-        <tr>
-            <td>pressure_unit</td>
-            <td>String</td>
-            <td>No</td>
-            <td>Unit for pressure variables.</td>
-            <td>'hPa', 'mmHg'</td>
-            <td>'hPa'</td>
-        </tr>
-        <tr>
-            <td>wind_speed_unit</td>
-            <td>String</td>
-            <td>No</td>
-            <td>Unit for wind speed variables.</td>
-            <td>'m/s', 'km/h', 'knot'</td>
-            <td>'m/s'</td>
-        </tr>
-        <tr>
-            <td>precipitation_unit</td>
-            <td>String</td>
-            <td>No</td>
-            <td>Unit for precipitation variables.</td>
-            <td>'mm'</td>
-            <td>'mm'</td>
-        </tr>
-        <tr>
-          <td>API key</td>
-          <td>String</td>
-          <td>Yes</td>
-          <td>Api Key to make requests. </td>
-          <td></td>
-          <td></td>
-        </tr>
-    </table>
-    </div>
+                      <!-- Historical variables field -->
+                        <div class="container-fluid my-5">
+                    
+                        <div class="row d-flex justify-content-start">
+                    
+                          <div class="col-lg-12 col-md-12">
+                                                    <!-- Hourly Variables field-->
+                                                    <h4 class="mt-5">Hourly Weather Variables </h4>
     
-    <h4 id="hourly-variables">Hourly Variables</h4>
+                                                    <div class="row g-4 d-flex justify-content-start my-1">
+                                                    <div class="col-12 col-lg-3 col-md-4 col-sm-6">
+                                                      <div class="form-check">
+                                                        <input class="form-check-input hourly-variable" type="checkbox" value="" id="air_temperature" checked />
+                                                        <label class="form-check-label" for="air_temperature">Temperature (2m)</label>
+                                                      </div>
+                                                    </div>
+                                                 
+                                                  <div class="col-12 col-lg-3 col-md-4 col-sm-6">
+                                                    <div class="form-check">
+                                                      <input class="form-check-input hourly-variable" type="checkbox" value="" id="wind_speed_10m" />
+                                                      <label class="form-check-label" for="wind_speed_10m">Wind Speed (10m)</label>
+                                                    </div>
+                                                  </div>
+                                                  <div class="col-12 col-lg-3 col-md-4 col-sm-6">
+                                                    <div class="form-check">
+                                                      <input class="form-check-input hourly-variable" type="checkbox" value="" id="wind_speed_100m" />
+                                                      <label class="form-check-label" for="wind_speed_100m">Wind Speed (100m)</label>
+                                                    </div>
+                                                  </div>
+                                                  <div class="col-12 col-lg-3 col-md-4 col-sm-6">
+                                                    <div class="form-check">
+                                                      <input class="form-check-input hourly-variable" type="checkbox" value="" id="2m_dewpoint_temperature" />
+                                                      <label class="form-check-label" for="2m_dewpoint_temperature">2m Dew Point Temperature</label>
+                                                    </div>
+                                                  </div>
+                                                  
+                                                </div>
+                                                  <div class="row g-4 d-flex justify-content-start my-1">
+                                                    <div class="col-12 col-lg-3 col-md-4 col-sm-6">
+                                                      <div class="form-check">
+                                                        <input class="form-check-input hourly-variable" type="checkbox" value="" id="soil_temperature_l1" />
+                                                        <label class="form-check-label" for="soil_temperature_l1">Soil Temperature (0-10cm)</label>
+                                                      </div>
+                                                    </div>
+                                                    <div class="col-12 col-lg-3 col-md-4 col-sm-6">
+                                                      <div class="form-check">
+                                                        <input class="form-check-input hourly-variable" type="checkbox" value="" id="soil_temperature_l2" />
+                                                        <label class="form-check-label" for="soil_temperature_l2">Soil Temperature (11-25cm)</label>
+                                                      </div>
+                                                    </div>
+                                                    <div class="col-12 col-lg-3 col-md-4 col-sm-6">
+                                                      <div class="form-check">
+                                                        <input class="form-check-input hourly-variable" type="checkbox" value="" id="soil_temperature_l3" />
+                                                        <label class="form-check-label" for="soil_temperature_l3">Soil Temperature (26-50cm)</label>
+                                                      </div>
+                                                    </div>
+                                                    <div class="col-12 col-lg-3 col-md-4 col-sm-6">
+                                                      <div class="form-check">
+                                                        <input class="form-check-input hourly-variable" type="checkbox" value="" id="soil_temperature_l4" />
+                                                        <label class="form-check-label" for="soil_temperature_l4">Soil Temperature (50cm and above)</label>
+                                                      </div>
+                                                    </div>
+                                                    <div class="col-12 col-lg-3 col-md-4 col-sm-6">
+                                                      <div class="form-check">
+                                                        <input class="form-check-input hourly-variable" type="checkbox" value="" id="10m_instantaneous_wind_gusts" />
+                                                        <label class="form-check-label" for="10m_instantaneous_wind_gusts">10m Instantaneous Wind Gust</label>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                  <br>
+                                                  <!-- End of hourly variables field -->
 
-    <div class="table">
-      <table>
-        <tr>
-            <th>Variable Name</th>
-            <th>Description</th>
-            <th>Default Unit</th>
-        </tr>
-        <tr>
-            <td>air_temperature</td>
-            <td>Air temperature</td>
-            <td>K</td>
-        </tr>
-        <tr>
-            <td>wind_speed_10m</td>
-            <td>Wind speed at 10 meters</td>
-            <td>m/s</td>
-        </tr>
-        <tr>
-            <td>wind_speed_100m</td>
-            <td>Wind speed at 100 meters</td>
-            <td>m/s</td>
-        </tr>
-        <tr>
-            <td>soil_temperature_l1</td>
-            <td>Soil temperature at level 1</td>
-            <td>K</td>
-        </tr>
-        <tr>
-            <td>soil_temperature_l2</td>
-            <td>Soil temperature at level 2</td>
-            <td>K</td>
-        </tr>
-        <tr>
-            <td>soil_temperature_l3</td>
-            <td>Soil temperature at level 3</td>
-            <td>K</td>
-        </tr>
-        <tr>
-            <td>soil_temperature_l4</td>
-            <td>Soil temperature at level 4</td>
-            <td>K</td>
-        </tr>
-        <tr>
-            <td>2m_dewpoint_temperature</td>
-            <td>Dew point temperature at 2 meters</td>
-            <td>K</td>
-        </tr>
-        <tr>
-            <td>10m_instantaneous_wind_gusts</td>
-            <td>Instantaneous wind gusts at 10 meters</td>
-            <td>m/s</td>
-        </tr>
-    </table>
-    </div>
+                                  <!-- Daily variables field -->
+                              <h4>Daily Weather Variables</h4>
+                              <div class="row g-4 d-flex justify-content-start my-1">
+                                <div class="col-12 col-lg-3 col-md-4 col-sm-6">
+                                  <div class="form-check">
+                                    <input class="form-check-input daily-variable" type="checkbox" value="" id="air_temperature_min" checked />
+                                    <label class="form-check-label" for="air_temperature_min">Minimum Temperature</label>
+                                  </div>
+                                </div>
+                                <div class="col-12 col-lg-3 col-md-4 col-sm-6">
+                                  <div class="form-check">
+                                    <input class="form-check-input daily-variable" type="checkbox" value="" id="air_temperature_max" />
+                                    <label class="form-check-label" for="air_temperature_max">Maximum Temperature</label>
+                                  </div>
+                                </div>
+                                <div class="col-12 col-lg-3 col-md-4 col-sm-6">
+                                  <div class="form-check">
+                                    <input class="form-check-input daily-variable" type="checkbox" value="" id="wind_speed_10m" />
+                                    <label class="form-check-label" for="wind_speed_10m">Wind Speed (10m)</label>
+                                  </div>
+                                </div>
+                                <div class="col-12 col-lg-3 col-md-4 col-sm-6">
+                                  <div class="form-check">
+                                    <input class="form-check-input daily-variable" type="checkbox" value="" id="relative_humidity_min" />
+                                    <label class="form-check-label" for="relative_humidity_min">Minimum Relative Humidity</label>
+                                  </div>
+                                </div>
+                              </div>
+                            <div class="row g-4 d-flex justify-content-start my-1">
+                              <div class="col-12 col-lg-3 col-md-4 col-sm-6">
+                                <div class="form-check">
+                                  <input class="form-check-input daily-variable" type="checkbox" value="" id="relative_humidity_max" />
+                                  <label class="form-check-label" for="relative_humidity_max">Maximum Relative Humidity</label>
+                                </div>
+                              </div>
+                              <div class="col-12 col-lg-3 col-md-4 col-sm-6">
+                                <div class="form-check">
+                                  <input class="form-check-input daily-variable" type="checkbox" value="" id="evaporation" />
+                                  <label class="form-check-label" for="evaporation">Evaporation</label>
+                                </div>
+                              </div>
+                              <div class="col-12 col-lg-3 col-md-4 col-sm-6">
+                                <div class="form-check">
+                                  <input class="form-check-input daily-variable" type="checkbox" value="" id="surface_pressure" />
+                                  <label class="form-check-label" for="surface_pressure">Surface Pressure</label>
+                                </div>
+                              </div>
+                              <div class="col-12 col-lg-3 col-md-4 col-sm-6">
+                                <div class="form-check">
+                                  <input class="form-check-input daily-variable" type="checkbox" value="" id="sensible_heat_flux" />
+                                  <label class="form-check-label" for="sensible_heat_flux">Sensible Heat Flux</label>
+                                </div>
+                              </div>
+                            
     
-
-    <h4 id="daily-variables">Daily Variables</h4>
+                            </div>
+                            <div class="row g-4 d-flex justify-content-start my-1">
+                              <div class="col-12 col-lg-3 col-md-4 col-sm-6">
+                                <div class="form-check">
+                                  <input class="form-check-input daily-variable" type="checkbox" value="" id="top_net_solar" />
+                                  <label class="form-check-label" for="top_net_solar">Top Net Solar Irradiation</label>
+                                </div>
+                              </div>
+                              <div class="col-12 col-lg-3 col-md-4 col-sm-6">
+                                <div class="form-check">
+                                  <input class="form-check-input daily-variable" type="checkbox" value="" id="surface_net_thermal" />
+                                  <label class="form-check-label" for="surface_net_thermal">Surface Net Thermal Irradiation</label>
+                                </div>
+                              </div>
+                              <div class="col-12 col-lg-3 col-md-4 col-sm-6">
+                                <div class="form-check">
+                                  <input class="form-check-input daily-variable" type="checkbox" value="" id="surface_net_solar" />
+                                  <label class="form-check-label" for="surface_net_solar">Surface Net Solar Irradiation</label>
+                                </div>
+                              </div><div class="col-12 col-lg-3 col-md-4 col-sm-6">
+                                <div class="form-check">
+                                  <input class="form-check-input daily-variable" type="checkbox" value="" id="top_net_thermal" />
+                                  <label class="form-check-label" for="top_net_thermal">Top Net Thermal Irradiation</label>
+                                </div>
+                              </div>
+                              
+                            </div>
+                            <div class="row g-4 d-flex justify-content-start my-1">
+                              <div class="col-12 col-lg-3 col-md-4 col-sm-6">
+                                <div class="form-check">
+                                  <input class="form-check-input daily-variable" type="checkbox" value="" id="soil_temperature_l1" />
+                                  <label class="form-check-label" for="soil_temperature_l1">Soil Temperature (0-10cm)</label>
+                                </div>
+                              </div>
+                              <div class="col-12 col-lg-3 col-md-4 col-sm-6">
+                                <div class="form-check">
+                                  <input class="form-check-input daily-variable" type="checkbox" value="" id="soil_temperature_l2" />
+                                  <label class="form-check-label" for="soil_temperature_l2">Soil Temperature (11-25cm)</label>
+                                </div>
+                              </div>
+                              <div class="col-12 col-lg-3 col-md-4 col-sm-6">
+                                <div class="form-check">
+                                  <input class="form-check-input daily-variable" type="checkbox" value="" id="soil_temperature_l3" />
+                                  <label class="form-check-label" for="soil_temperature_l3">Soil Temperature (26-50cm)</label>
+                                </div>
+                              </div>
+                              <div class="col-12 col-lg-3 col-md-4 col-sm-6">
+                                <div class="form-check">
+                                  <input class="form-check-input daily-variable" type="checkbox" value="" id="soil_temperature_l4" />
+                                  <label class="form-check-label" for="soil_temperature_l4">Soil Temperature (50cm and above)</label>
+                                </div>
+                              </div>
+                              
+                            </div>
+                            <div class="row g-4 d-flex justify-content-start my-1">
+                              <div class="col-12 col-lg-3 col-md-4 col-sm-6">
+                                <div class="form-check">
+                                  <input class="form-check-input daily-variable" type="checkbox" value="" id="potential_evaporation" />
+                                  <label class="form-check-label" for="potential_evaporation">Potential Evaporation</label>
+                                </div>
+                              </div>
+                              <div class="col-12 col-lg-3 col-md-4 col-sm-6">
+                                <div class="form-check">
+                                  <input class="form-check-input daily-variable" type="checkbox" value="" id="wind_speed_100m" />
+                                  <label class="form-check-label" for="100m_wind_speed">100m Wind Speed</label>
+                                </div>
+                              </div>
+                              <div class="col-12 col-lg-3 col-md-4 col-sm-6">
+                                <div class="form-check">
+                                  <input class="form-check-input daily-variable" type="checkbox" value="" id="2m_dewpoint_temperature" />
+                                  <label class="form-check-label" for="2m_dewpoint_temperature">2m Dew Point Temperature</label>
+                                </div>
+                              </div>
+                              <div class="col-12 col-lg-3 col-md-4 col-sm-6">
+                                <div class="form-check">
+                                  <input class="form-check-input daily-variable" type="checkbox" value="" id="low_cloud_cover" />
+                                  <label class="form-check-label" for="low_cloud_cover">Low Cloud Cover</label>
+                                </div>
+                              </div>
+                            </div>
+                            
+                            <div class="row g-4 d-flex justify-content-start my-1">
+                              <div class="col-12 col-lg-3 col-md-4 col-sm-6">
+                                <div class="form-check">
+                                  <input class="form-check-input daily-variable" type="checkbox" value="" id="high_cloud_cover" />
+                                  <label class="form-check-label" for="high_cloud_cover">High Cloud Cover</label>
+                                </div>
+                              </div>
+                              <div class="col-12 col-lg-3 col-md-4 col-sm-6">
+                                <div class="form-check">
+                                  <input class="form-check-input daily-variable" type="checkbox" value="" id="medium_cloud_cover" />
+                                  <label class="form-check-label" for="medium_cloud_cover">Medium Cloud Cover</label>
+                                </div>
+                              </div>
+                              <div class="col-12 col-lg-3 col-md-4 col-sm-6">
+                                <div class="form-check">
+                                  <input class="form-check-input daily-variable" type="checkbox" value="" id="total_cloud_cover" />
+                                  <label class="form-check-label" for="total_cloud_cover">Total Cloud Cover</label>
+                                </div>
+                              </div>
+                              <div class="col-12 col-lg-3 col-md-4 col-sm-6">
+                                <div class="form-check">
+                                  <input class="form-check-input daily-variable" type="checkbox" value="" id="runoff" />
+                                  <label class="form-check-label" for="runoff">Runoff</label>
+                                </div>
+                              </div>
+                            </div>
     
-    <div class="table">
-    <table>
-        <tr>
-            <th>Variable Name</th>
-            <th>Description</th>
-            <th>Default Unit</th>
-        </tr>
-        <tr>
-            <td>air_temperature_min</td>
-            <td>Minimum air temperature</td>
-            <td>K</td>
-        </tr>
-        <tr>
-            <td>air_temperature_max</td>
-            <td>Maximum air temperature</td>
-            <td>K</td>
-        </tr>
-        <tr>
-            <td>wind_speed_10m</td>
-            <td>Wind speed at 10 meters</td>
-            <td>m/s</td>
-        </tr>
-        <tr>
-            <td>soil_temperature_l1</td>
-            <td>Soil temperature at level 1</td>
-            <td>K</td>
-        </tr>
-        <tr>
-            <td>soil_temperature_l2</td>
-            <td>Soil temperature at level 2</td>
-            <td>K</td>
-        </tr>
-        <tr>
-            <td>soil_temperature_l3</td>
-            <td>Soil temperature at level 3</td>
-            <td>K</td>
-        </tr>
-        <tr>
-            <td>soil_temperature_l4</td>
-            <td>Soil temperature at level 4</td>
-            <td>K</td>
-        </tr>
-        <tr>
-            <td>surface_net_solar</td>
-            <td>Surface net solar radiation</td>
-            <td>J m-2</td>
-        </tr>
-        <tr>
-            <td>surface_net_thermal</td>
-            <td>Surface net thermal radiation</td>
-            <td>J m-2</td>
-        </tr>
-        <tr>
-            <td>top_net_solar</td>
-            <td>Top net solar radiation</td>
-            <td>J m-2</td>
-        </tr>
-        <tr>
-            <td>evaporation</td>
-            <td>Total evaporation</td>
-            <td>m</td>
-        </tr>
-        <tr>
-            <td>potential_evaporation</td>
-            <td>Potential evaporation</td>
-            <td>m</td>
-        </tr>
-        <tr>
-            <td>top_net_thermal</td>
-            <td>Top net thermal radiation</td>
-            <td>J m-2</td>
-        </tr>
-        <tr>
-            <td>sensible_heat_flux</td>
-            <td>Sensible heat flux</td>
-            <td>J m-2</td>
-        </tr>
-        <tr>
-            <td>relative_humidity_min</td>
-            <td>Minimum relative humidity</td>
-            <td>%</td>
-        </tr>
-        <tr>
-            <td>relative_humidity_max</td>
-            <td>Maximum relative humidity</td>
-            <td>%</td>
-        </tr>
-        <tr>
-            <td>surface_pressure</td>
-            <td>Surface pressure</td>
-            <td>hpa</td>
-        </tr>
-        <tr>
-            <td>wind_speed_100m</td>
-            <td>Wind speed at 100 meters</td>
-            <td>m/s</td>
-        </tr>
-        <tr>
-            <td>2m_dewpoint_temperature</td>
-            <td>Dew point temperature at 2 meters</td>
-            <td>K</td>
-        </tr>
-        <tr>
-            <td>low_cloud_cover</td>
-            <td>Low cloud cover</td>
-            <td>0-1</td>
-        </tr>
-        <tr>
-            <td>medium_cloud_cover</td>
-            <td>Medium cloud cover</td>
-            <td>0-1</td>
-        </tr>
-        <tr>
-            <td>high_cloud_cover</td>
-            <td>High cloud cover</td>
-            <td>0-1</td>
-        </tr>
-        <tr>
-            <td>total_cloud_cover</td>
-            <td>Total cloud cover</td>
-            <td>0-1</td>
-        </tr>
-        <tr>
-            <td>total_column_cloud_liquid_water</td>
-            <td>Total column cloud liquid water</td>
-            <td>kg m-2</td>
-        </tr>
-        <tr>
-            <td>runoff</td>
-            <td>Total runoff</td>
-            <td>m</td>
-        </tr>
-        <tr>
-            <td>subsurface_runoff</td>
-            <td>Subsurface runoff</td>
-            <td>m</td>
-        </tr>
-        <tr>
-            <td>surface_runoff</td>
-            <td>Surface runoff</td>
-            <td>m</td>
-        </tr>
-        <tr>
-            <td>convective_rain_rate</td>
-            <td>Convective rain rate</td>
-            <td>kg m-2 s-1</td>
-        </tr>
-        <tr>
-            <td>total_column_rain_water</td>
-            <td>Total column rain water</td>
-            <td>kg m-2</td>
-        </tr>
-        <tr>
-            <td>total_precipitation</td>
-            <td>Total precipitation</td>
-            <td>mm</td>
-        </tr>
-        <tr>
-            <td>10m_instantaneous_wind_gusts</td>
-            <td>Instantaneous wind gusts at 10 meters</td>
-            <td>m/s</td>
-        </tr>
-    </table>
-    </div>
-   
-    <h3>Notes</h3>
-    <div class="note">
-        <ul>
-            <li>The API currently supports locations within Africa and its islands. Latitude must be between -35 and 40.</li>
-            <li>You can request only a maximum of two years at a time for hourly variables</li>
-            <li>You can request multiple variables by providing a comma-separated list in the 'daily' or 'hourly' parameters.</li>
-            <li>If both 'daily' and 'hourly' parameters are omitted, no data will be returned. At least one of 'daily' or 'hourly' must be specified.</li>
-            <li>The default response format is JSON. To download data in 'csv' or 'xlsx' format, specify the 'format' parameter accordingly.</li>
-            <li>Date format must be 'YYYY-MM-DD'.</li>
-            <li>Ensure that the 'start_date' is before the 'end_date'.</li>
-        </ul>
-    </div>
+                            <div class="row g-4 d-flex justify-content-start my-1">
+                              <div class="col-12 col-lg-3 col-md-4 col-sm-6">
+                                <div class="form-check">
+                                  <input class="form-check-input daily-variable" type="checkbox" value="" id="subsurface_runoff" />
+                                  <label class="form-check-label" for="subsurface_runoff">Subsurface Runoff</label>
+                                </div>
+                              </div>
+                              <div class="col-12 col-lg-3 col-md-4 col-sm-6">
+                                <div class="form-check">
+                                  <input class="form-check-input daily-variable" type="checkbox" value="" id="surface_runoff" />
+                                  <label class="form-check-label" for="surface_runoff">Surface Runoff</label>
+                                </div>
+                              </div>
+                              <div class="col-12 col-lg-3 col-md-4 col-sm-6">
+                                <div class="form-check">
+                                  <input class="form-check-input daily-variable" type="checkbox" value="" id="convective_rain_rate" />
+                                  <label class="form-check-label" for="convective_rain_rate">Convective Rain Rate</label>
+                                </div>
+                              </div>
+                              <div class="col-12 col-lg-3 col-md-4 col-sm-6">
+                                <div class="form-check">
+                                  <input class="form-check-input daily-variable" type="checkbox" value="" id="total_column_rain_water" />
+                                  <label class="form-check-label" for="total_column_rain_water">Total Column Rain Rate</label>
+                                </div>
+                              </div>
+                            </div>
+    
+                            <div class="row g-4 d-flex justify-content-start my-1">
+                              <div class="col-12 col-lg-3 col-md-4 col-sm-6">
+                                <div class="form-check">
+                                  <input class="form-check-input daily-variable" type="checkbox" value="" id="total_precipitation" />
+                                  <label class="form-check-label" for="total_precipitation">Total Precipitation</label>
+                                </div>
+                              </div>
+                              <div class="col-12 col-lg-3 col-md-4 col-sm-6">
+                                <div class="form-check">
+                                  <input class="form-check-input daily-variable" type="checkbox" value="" id="10m_instantaneous_wind_gusts" />
+                                  <label class="form-check-label" for="10m_instantaneous_wind_gusts">10m Instantaneous Wind Gust</label>
+                                </div>
+                              </div>
+                              <div class="col-12 col-lg-3 col-md-4 col-sm-6">
+                                <div class="form-check">
+                                  <input class="form-check-input daily-variable" type="checkbox" value="" id="total_column_cloud_liquid_water" />
+                                  <label class="form-check-label" for="total_column_cloud_liquid_water">Total Column Cloud Liquid Water</label>
+                                </div>
+                              </div>
+                            </div>
+    
+                              
+      <!-- Graph & URL section -->
+                            <div class="col-auto my-5">
+                              <div class="graph-box">
+                                <div class="loading">
+                                  <img src="/static/assets/loader.gif" alt="Loading..."  width="50" />
+                                </div>
+                                <div class="chart">
+                                  <canvas id="chart"></canvas>
+                                </div>
+                                  <div class="graph-text">
+    
+                                    <div class="alert alert-primary d-flex align-items-center" role="alert">
+                                      <div><i class="fas fa-circle-info"></i> Parameters have changed.
+                                      <button type="submit" class="btn btn-primary ms-2" onclick="getData()" style="background-color: #0257F5; border-radius: 50px; padding: 12px 24px; box-shadow: none;font-size: 14px; text-transform: unset;"><i class="fas fa-arrow-rotate-right" style="color: white;" ></i> Reload Chart</button>
+                                    </div>
+                                  </div>
+                                  </div>
+                                  <div id="error"
+       class="alert alert-danger d-flex align-items-center"
+       role="alert"
+       style="display: none !important;"></div>
+                              </div>
+                              <div class="col-12 my-4"><label for="api_url" class="form-label">API URL</label> <small class="text-muted"> (copy this
+                                URL into your application)</small>.
+                                <input type="text" class="form-control mb-3" id="displayDiv" readonly="">
+                              <!-- <div class="displayDiv" id="displayDiv">/v1/historical?latitude=6.471&longitude=3.6356&start_date=1990-01-01&end_date=1990-01-10&daily=air_temperature_min</div></div> -->
+                              <button type="button" class="btn btn-secondary my-1" style="color: #0257F5; border-radius: 50px; padding: 12px 24px; box-shadow: none;font-size: 14px; text-transform: unset;" data-mdb-ripple-init onclick="downloadData(this.id)" id="xlsx">Download XLSX</button>
+                             <button type="button" class="btn btn-secondary my-1" style="color: #0257F5; border-radius: 50px; padding: 12px 24px; box-shadow: none;font-size: 14px; text-transform: unset;" data-mdb-ripple-init onclick="downloadData(this.id)" id="csv">Download CSV</button>
+                            </div>
+                          </div>
+                    <!-- End of Graph and URL section -->
+                        </div>
+                    
+                      </div>
+            
+            </div>
 
-    <h4>Example Request</h4>
-    <p>Retrieve daily maximum and minimum air temperature data for Lagos, Nigeria, from January 1, 2020, to January 7, 2020.</p>
-
-    <div class="code">
-        GET /v1/historical?latitude=6.5244&longitude=3.3792&start_date=2020-01-01&end_date=2020-01-07&daily=air_temperature_min,air_temperature_max&temperature_unit=C
-    </div>
-
-    <h4>Example Response</h4>
-    <p>The response will be a JSON object containing the requested data:</p>
-    <pre>{
-  "daily": {
-    "dates": ["2020-01-01", "2020-01-02", "..."],
-    "air_temperature_min": [22.5, 23.0, "..."],
-    "air_temperature_max": [30.1, 31.4, "..."]
-  },
-  "units": {
-    "temperature": "C"
-  },
-  "latitude": "6.5244",
-  "longitude": "3.3792"
-}
-</pre>
-
-    <h4>Download Data in CSV Format</h4>
-    <p>To download the data in CSV format, include the 'format' parameter:</p>
-    <div class="code">
-        GET /v1/historical?latitude=6.5244&longitude=3.3792&start_date=2020-01-01&end_date=2020-01-07&daily=air_temperature_min,air_temperature_max&temperature_unit=C&format=csv
-    </div>
-
-
-    <h4>Error Handling</h4>
-    <p>If an error occurs, the API will return a JSON object with an 'error' field set to 'true' and a 'reason' field describing the error.</p>
-    <pre>{
-    "error": "true",
-    "reason": "Parameter 'latitude' and 'longitude' must be provided."
-    }</pre>
-
-    <h4>Contact</h4>
-    <p>If you have any questions or need assistance, please contact the API support team.</p>
-
-
+          <!--End of Historical variables field -->
+          
           </div>
+
+          <!-- Documentation section -->
+      <div class="container-fluid my-5">
+        <!-- Tabs content -->
+        <h3>Historical Weather Data API Documentation</h3>
     
+        <h4>Endpoint</h4>
+        <p><strong>GET /v1/historical</strong></p>
+    
+        <h4>Description</h4>
+        <p>This API endpoint retrieves historical weather data for a specified location and time range. Users can request daily and hourly weather variables, specify units, and choose the output format.</p>
+    
+        <h4>Query Parameters</h4>
+        <div class="table">
+          <table>
+            <tr>
+                <th>Parameter</th>
+                <th>Type</th>
+                <th>Required</th>
+                <th>Description</th>
+                <th>Possible Values</th>
+                <th>Default Value</th>
+            </tr>
+            <tr>
+                <td>format</td>
+                <td>String</td>
+                <td>No</td>
+                <td>Format of the response data.</td>
+                <td>'csv', 'xlsx', 'json'</td>
+                <td>'json'</td>
+            </tr>
+            <tr>
+              <td>latitude</td>
+                <td>Float</td>
+                <td>Yes</td>
+                <td>Latitude of the location.(Geographical WGS84 coordinates of the location)</td>
+                <td>-35 to 40 (Africa region)</td>
+                <td>6.471</td>
+            </tr>
+            <tr>
+              <td>longitude</td>
+              <td>Float</td>
+              <td>Yes</td>
+              <td>Longitude of the location.(Geographical WGS84 coordinates of the location)</td>
+              <td>-180 to 180</td>
+              <td>3.6356</td>
+            </tr>
+            <tr>
+                <td>daily</td>
+                <td>String</td>
+                <td>No</td>
+                <td>Comma-separated list of daily variables to retrieve.</td>
+                <td>See <a href="#daily-variables">Daily Variables</a></td>
+                <td>air_temperature_min</td>
+            </tr>
+            <tr>
+                <td>hourly</td>
+                <td>String</td>
+                <td>No</td>
+                <td>Comma-separated list of hourly variables to retrieve.</td>
+                <td>See <a href="#hourly-variables">Hourly Variables</a></td>
+                <td>air_temperature</td>
+            </tr>
+            <tr>
+                <td>start_date</td>
+                <td>String</td>
+                <td>Yes</td>
+                <td>Start date in 'YYYY-MM-DD' format.</td>
+                <td>Valid date</td>
+                <td>1990-01-01</td>
+            </tr>
+            <tr>
+                <td>end_date</td>
+                <td>String</td>
+                <td>Yes</td>
+                <td>End date in 'YYYY-MM-DD' format.</td>
+                <td>Valid date</td>
+                <td>1990-01-10</td>
+            </tr>
+            <tr>
+                <td>temperature_unit</td>
+                <td>String</td>
+                <td>No</td>
+                <td>Unit for temperature variables.</td>
+                <td>'C', 'F', 'K'</td>
+                <td>'K'</td>
+            </tr>
+            <tr>
+                <td>pressure_unit</td>
+                <td>String</td>
+                <td>No</td>
+                <td>Unit for pressure variables.</td>
+                <td>'hPa', 'mmHg'</td>
+                <td>'hPa'</td>
+            </tr>
+            <tr>
+                <td>wind_speed_unit</td>
+                <td>String</td>
+                <td>No</td>
+                <td>Unit for wind speed variables.</td>
+                <td>'m/s', 'km/h', 'knot'</td>
+                <td>'m/s'</td>
+            </tr>
+            <tr>
+                <td>precipitation_unit</td>
+                <td>String</td>
+                <td>No</td>
+                <td>Unit for precipitation variables.</td>
+                <td>'mm'</td>
+                <td>'mm'</td>
+            </tr>
+            <tr>
+              <td>API key</td>
+              <td>String</td>
+              <td>Yes</td>
+              <td>Api Key to make requests. </td>
+              <td></td>
+              <td></td>
+            </tr>
+        </table>
+        </div>
+        
+        <h4 id="hourly-variables">Hourly Variables</h4>
+    
+        <div class="table">
+          <table>
+            <tr>
+                <th>Variable Name</th>
+                <th>Description</th>
+                <th>Default Unit</th>
+            </tr>
+            <tr>
+                <td>air_temperature</td>
+                <td>Air temperature</td>
+                <td>K</td>
+            </tr>
+            <tr>
+                <td>wind_speed_10m</td>
+                <td>Wind speed at 10 meters</td>
+                <td>m/s</td>
+            </tr>
+            <tr>
+                <td>wind_speed_100m</td>
+                <td>Wind speed at 100 meters</td>
+                <td>m/s</td>
+            </tr>
+            <tr>
+                <td>soil_temperature_l1</td>
+                <td>Soil temperature at level 1</td>
+                <td>K</td>
+            </tr>
+            <tr>
+                <td>soil_temperature_l2</td>
+                <td>Soil temperature at level 2</td>
+                <td>K</td>
+            </tr>
+            <tr>
+                <td>soil_temperature_l3</td>
+                <td>Soil temperature at level 3</td>
+                <td>K</td>
+            </tr>
+            <tr>
+                <td>soil_temperature_l4</td>
+                <td>Soil temperature at level 4</td>
+                <td>K</td>
+            </tr>
+            <tr>
+                <td>2m_dewpoint_temperature</td>
+                <td>Dew point temperature at 2 meters</td>
+                <td>K</td>
+            </tr>
+            <tr>
+                <td>10m_instantaneous_wind_gusts</td>
+                <td>Instantaneous wind gusts at 10 meters</td>
+                <td>m/s</td>
+            </tr>
+        </table>
         </div>
         
     
+        <h4 id="daily-variables">Daily Variables</h4>
+        
+        <div class="table">
+        <table>
+            <tr>
+                <th>Variable Name</th>
+                <th>Description</th>
+                <th>Default Unit</th>
+            </tr>
+            <tr>
+                <td>air_temperature_min</td>
+                <td>Minimum air temperature</td>
+                <td>K</td>
+            </tr>
+            <tr>
+                <td>air_temperature_max</td>
+                <td>Maximum air temperature</td>
+                <td>K</td>
+            </tr>
+            <tr>
+                <td>wind_speed_10m</td>
+                <td>Wind speed at 10 meters</td>
+                <td>m/s</td>
+            </tr>
+            <tr>
+                <td>soil_temperature_l1</td>
+                <td>Soil temperature at level 1</td>
+                <td>K</td>
+            </tr>
+            <tr>
+                <td>soil_temperature_l2</td>
+                <td>Soil temperature at level 2</td>
+                <td>K</td>
+            </tr>
+            <tr>
+                <td>soil_temperature_l3</td>
+                <td>Soil temperature at level 3</td>
+                <td>K</td>
+            </tr>
+            <tr>
+                <td>soil_temperature_l4</td>
+                <td>Soil temperature at level 4</td>
+                <td>K</td>
+            </tr>
+            <tr>
+                <td>surface_net_solar</td>
+                <td>Surface net solar radiation</td>
+                <td>J m-2</td>
+            </tr>
+            <tr>
+                <td>surface_net_thermal</td>
+                <td>Surface net thermal radiation</td>
+                <td>J m-2</td>
+            </tr>
+            <tr>
+                <td>top_net_solar</td>
+                <td>Top net solar radiation</td>
+                <td>J m-2</td>
+            </tr>
+            <tr>
+                <td>evaporation</td>
+                <td>Total evaporation</td>
+                <td>m</td>
+            </tr>
+            <tr>
+                <td>potential_evaporation</td>
+                <td>Potential evaporation</td>
+                <td>m</td>
+            </tr>
+            <tr>
+                <td>top_net_thermal</td>
+                <td>Top net thermal radiation</td>
+                <td>J m-2</td>
+            </tr>
+            <tr>
+                <td>sensible_heat_flux</td>
+                <td>Sensible heat flux</td>
+                <td>J m-2</td>
+            </tr>
+            <tr>
+                <td>relative_humidity_min</td>
+                <td>Minimum relative humidity</td>
+                <td>%</td>
+            </tr>
+            <tr>
+                <td>relative_humidity_max</td>
+                <td>Maximum relative humidity</td>
+                <td>%</td>
+            </tr>
+            <tr>
+                <td>surface_pressure</td>
+                <td>Surface pressure</td>
+                <td>hpa</td>
+            </tr>
+            <tr>
+                <td>wind_speed_100m</td>
+                <td>Wind speed at 100 meters</td>
+                <td>m/s</td>
+            </tr>
+            <tr>
+                <td>2m_dewpoint_temperature</td>
+                <td>Dew point temperature at 2 meters</td>
+                <td>K</td>
+            </tr>
+            <tr>
+                <td>low_cloud_cover</td>
+                <td>Low cloud cover</td>
+                <td>0-1</td>
+            </tr>
+            <tr>
+                <td>medium_cloud_cover</td>
+                <td>Medium cloud cover</td>
+                <td>0-1</td>
+            </tr>
+            <tr>
+                <td>high_cloud_cover</td>
+                <td>High cloud cover</td>
+                <td>0-1</td>
+            </tr>
+            <tr>
+                <td>total_cloud_cover</td>
+                <td>Total cloud cover</td>
+                <td>0-1</td>
+            </tr>
+            <tr>
+                <td>total_column_cloud_liquid_water</td>
+                <td>Total column cloud liquid water</td>
+                <td>kg m-2</td>
+            </tr>
+            <tr>
+                <td>runoff</td>
+                <td>Total runoff</td>
+                <td>m</td>
+            </tr>
+            <tr>
+                <td>subsurface_runoff</td>
+                <td>Subsurface runoff</td>
+                <td>m</td>
+            </tr>
+            <tr>
+                <td>surface_runoff</td>
+                <td>Surface runoff</td>
+                <td>m</td>
+            </tr>
+            <tr>
+                <td>convective_rain_rate</td>
+                <td>Convective rain rate</td>
+                <td>kg m-2 s-1</td>
+            </tr>
+            <tr>
+                <td>total_column_rain_water</td>
+                <td>Total column rain water</td>
+                <td>kg m-2</td>
+            </tr>
+            <tr>
+                <td>total_precipitation</td>
+                <td>Total precipitation</td>
+                <td>mm</td>
+            </tr>
+            <tr>
+                <td>10m_instantaneous_wind_gusts</td>
+                <td>Instantaneous wind gusts at 10 meters</td>
+                <td>m/s</td>
+            </tr>
+        </table>
+        </div>
+       
+        <h3>Notes</h3>
+        <div class="note">
+            <ul>
+                <li>The API currently supports locations within Africa and its islands. Latitude must be between -35 and 40.</li>
+                <li>You can request only a maximum of two years at a time for hourly variables</li>
+                <li>You can request multiple variables by providing a comma-separated list in the 'daily' or 'hourly' parameters.</li>
+                <li>If both 'daily' and 'hourly' parameters are omitted, no data will be returned. At least one of 'daily' or 'hourly' must be specified.</li>
+                <li>The default response format is JSON. To download data in 'csv' or 'xlsx' format, specify the 'format' parameter accordingly.</li>
+                <li>Date format must be 'YYYY-MM-DD'.</li>
+                <li>Ensure that the 'start_date' is before the 'end_date'.</li>
+            </ul>
+        </div>
+    
+        <h4>Example Request</h4>
+        <p>Retrieve daily maximum and minimum air temperature data for Lagos, Nigeria, from January 1, 2020, to January 7, 2020.</p>
+    
+        <div class="code">
+            GET /v1/historical?latitude=6.5244&longitude=3.3792&start_date=2020-01-01&end_date=2020-01-07&daily=air_temperature_min,air_temperature_max&temperature_unit=C
+        </div>
+    
+        <h4>Example Response</h4>
+        <p>The response will be a JSON object containing the requested data:</p>
+        <pre>{
+      "daily": {
+        "dates": ["2020-01-01", "2020-01-02", "..."],
+        "air_temperature_min": [22.5, 23.0, "..."],
+        "air_temperature_max": [30.1, 31.4, "..."]
+      },
+      "units": {
+        "temperature": "C"
+      },
+      "latitude": "6.5244",
+      "longitude": "3.3792"
+    }
+    </pre>
+    
+        <h4>Download Data in CSV Format</h4>
+        <p>To download the data in CSV format, include the 'format' parameter:</p>
+        <div class="code">
+            GET /v1/historical?latitude=6.5244&longitude=3.3792&start_date=2020-01-01&end_date=2020-01-07&daily=air_temperature_min,air_temperature_max&temperature_unit=C&format=csv
+        </div>
+    
+    
+        <h4>Error Handling</h4>
+        <p>If an error occurs, the API will return a JSON object with an 'error' field set to 'true' and a 'reason' field describing the error.</p>
+        <pre>{
+        "error": "true",
+        "reason": "Parameter 'latitude' and 'longitude' must be provided."
+        }</pre>
+    
+        <h4>Contact</h4>
+        <p>If you have any questions or need assistance, please contact the API support team.</p>
       </div>
-      
-   
-
+      <!-- End of documentation section -->
+          </div>
+               <!-- End of Historical tab -->
+         
+          
+          </div>
+          </div>
+          
       
 
       <!-- Modals -->
-      <div class="modal fade" id="searchLocation" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal fade" id="searchLocation" tabindex="-1" aria-labelledby="exampleModalLabel">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">

@@ -22,6 +22,32 @@
 #chart{
    width: 100%;
 }
+.graph-box2{
+   height: 50vh; 
+   background: #161619;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   border-radius: 10px;
+   /* left: 50%; */
+}
+.graph-text2{
+   display: block;
+}
+.loading2{
+   display:none;
+}
+.chart2{
+   display: none;
+   width: 100%;
+   height: 100%;
+}
+#chart{
+   width: 100%;
+}
+#chart2{
+   width: 100%;
+}
 .displayDiv{
    width: 100%;
    height: 20%;
